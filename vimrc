@@ -4,6 +4,7 @@ set shiftwidth=4
 set autoindent
 set mouse=a
 set smartindent
+:syntax on
 
 call plug#begin('~/.vim/plugged')
 
