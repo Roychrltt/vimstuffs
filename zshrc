@@ -16,6 +16,11 @@ export PATH="$PATH:/Users/roychrltt/francinette/bin/"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="arrow"
 
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+
 alias zshconfig="vim ~/.zshrc"
 alias sozsh="source ~/.zshrc"
 alias vimconfig="vim ~/.vimrc"
@@ -27,6 +32,7 @@ alias vg="valgrind"
 alias vgl="valgrind --leak-check=full"
 alias vgll="valgrind --leak-check=full --show-leak-kinds=all"
 alias vglf="valgrind --leak-check=full --track-fds=yes"
+alias francinette=/Users/roychrltt/francinette/tester.sh
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -39,7 +45,7 @@ alias vglf="valgrind --leak-check=full --track-fds=yes"
 
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+HYPHEN_INSENSITIVE="true"
 
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
@@ -47,7 +53,7 @@ alias vglf="valgrind --leak-check=full --track-fds=yes"
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
+zstyle ':omz:update' frequency 30
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -108,11 +114,3 @@ source $ZSH/oh-my-zsh.sh
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-
-alias francinette=/Users/roychrltt/francinette/tester.sh
