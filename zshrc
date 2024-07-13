@@ -32,7 +32,6 @@ alias vg="valgrind"
 alias vgl="valgrind --leak-check=full"
 alias vgll="valgrind --leak-check=full --show-leak-kinds=all"
 alias vglf="valgrind --leak-check=full --track-fds=yes"
-alias francinette=/Users/roychrltt/francinette/tester.sh
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
