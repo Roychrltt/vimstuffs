@@ -100,7 +100,7 @@ std::cout << RED << ${1} << RESET << std::endl;
 endsnippet
 
 snippet up
-std::unique_ptr<${1:type}> $2
+std::unique_ptr<${1:type}> ${2}
 endsnippet
 
 snippet mu
@@ -123,10 +123,6 @@ snippet map "std::map (map)"
 std::map<${1:key}, ${2:value}> map$0;
 endsnippet
 
-snippet str
-std::string ${1:string}
-endsnippet
-
 snippet tup
 std::tuple <${1:tuple}>
 endsnippet
@@ -141,6 +137,10 @@ endsnippet
 
 snippet ofs
 std::ofstream ${1:string}
+endsnippet
+
+snippet str
+std::string ${1:string}
 endsnippet
 
 snippet strs
@@ -173,7 +173,39 @@ class ${1:`!p snip.rv = snip.basename or "name"`}
 };
 endsnippet
 
-snippet cla "An entire .h generator" b
+snippet classimp "class implementation"
+#include "${1:`!p snip.rv = snip.basename or "name"`}.hpp"
+
+${1/(\w+).*/$1/}::${1/(\w+).*/$1/}(void)
+{
+	std::cout << GRAY << "[${1/(\w+).*/$1/}] default constructor get called" << RESET << std::endl;
+}
+
+${1/(\w+).*/$1/}::${1/(\w+).*/$1/}(const std::string& name) : m_name(name)
+{
+	std::cout << GRAY << "[${1/(\w+).*/$1/}] parametric constructor get called" << RESET << std::endl;
+}
+
+${1/(\w+).*/$1/}::${1/(\w+).*/$1/}(const ${1/(\w+).*/$1/} &other)
+{
+	std::cout << GRAY << "[${1/(\w+).*/$1/}] copy constructor get called" << RESET << std::endl;
+	*this = other;
+}
+
+${1/(\w+).*/$1/}::~${1/(\w+).*/$1/}(void)
+{
+	std::cout << GRAY << "[${1/(\w+).*/$1/}] destructor get called" << RESET << std::endl;
+}
+
+${1/(\w+).*/$1/} &${1/(\w+).*/$1/}::operator=(const ${1/(\w+).*/$1/} &other)
+{
+	(void) other;
+	std::cout << GRAY << "[${1/(\w+).*/$1/}] copy assignment constructor get called" << RESET << std::endl;
+	return *this;
+}
+endsnippet
+
+snippet cla "An entire .hpp generator" b
 #ifndef ${2:`!v substitute(vim_snippets#Filename('$1_HPP','ClassName'),'.*','\U&\E','')`}
 #define $2
 
