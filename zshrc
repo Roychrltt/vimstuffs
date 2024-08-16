@@ -32,6 +32,12 @@ alias vg="valgrind"
 alias vgl="valgrind --leak-check=full"
 alias vgll="valgrind --leak-check=full --show-leak-kinds=all"
 alias vglf="valgrind --leak-check=full --track-fds=yes"
+alias cppsnippets="vim ~/.vim/bundle/vim-snippets/UltiSnips/cpp.snippets"
+alias csnippets="vim ~/.vim/bundle/vim-snippets/UltiSnips/c.snippets"
+alias cppupdate="cp ~/.vim/bundle/vim-snippets/UltiSnips/cpp.snippets ~/vimstuffs/."
+alias cupdate="cp ~/.vim/bundle/vim-snippets/UltiSnips/c.snippets ~/vimstuffs/."
+alias zshupdate="cp ~/.zshrc ~/vimstuffs/zshrc"
+alias vimupdate="cp ~/.vimrc ~/vimstuffs/vimrc"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load

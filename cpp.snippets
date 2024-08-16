@@ -209,6 +209,9 @@ snippet cla "An entire .hpp generator" b
 #ifndef ${2:`!v substitute(vim_snippets#Filename('$1_HPP','ClassName'),'.*','\U&\E','')`}
 #define $2
 
+# include <iostream>
+# include <string>
+
 class ${1:`!v substitute(substitute(vim_snippets#Filename('$1','ClassName'),'^.','\u&',''), '_\(\w\)', '\u\1', 'g')`}
 {
 	private:
