@@ -8,7 +8,6 @@ export USER
 MAIL=xiaxu@student.42.fr
 export MAIL
 export PATH="$PATH:/Users/roychrltt/Library/Python/3.9/bin/"
-export PATH="$PATH:/Users/roychrltt/francinette/bin/"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -29,9 +28,7 @@ alias ccc="cc -Wall -Wextra -Werror"
 alias ggg="gcc -Wall -Wextra -Werror"
 alias rr="rm -rf"
 alias vg="valgrind"
-alias vgl="valgrind --leak-check=full"
-alias vgll="valgrind --leak-check=full --show-leak-kinds=all"
-alias vglf="valgrind --leak-check=full --track-fds=yes"
+alias vgll="valgrind --leak-check=full --show-leak-kindd=all --track-fds=yes"
 alias cppsnippets="vim ~/.vim/bundle/vim-snippets/UltiSnips/cpp.snippets"
 alias csnippets="vim ~/.vim/bundle/vim-snippets/UltiSnips/c.snippets"
 alias cppupdate="cp ~/.vim/bundle/vim-snippets/UltiSnips/cpp.snippets ~/vimstuffs/."
@@ -119,3 +116,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
+
+alias francinette=/Users/roychrltt/francinette/tester.sh
+
+alias paco=/Users/roychrltt/francinette/tester.sh
