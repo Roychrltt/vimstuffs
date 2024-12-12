@@ -7,29 +7,32 @@ USER=xiaxu
 export USER
 MAIL=xiaxu@student.42.fr
 export MAIL
-export PATH="$PATH:/Users/roychrltt/Library/Python/3.9/bin/"
-
+#export PATH="~/francinette/bin/"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="arrow"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-
 alias zshconfig="vim ~/.zshrc"
-alias sozsh="source ~/.zshrc"
 alias vimconfig="vim ~/.vimrc"
+alias sozsh="source ~/.zshrc"
 alias sovim="source ~/.vimrc"
+alias ohmyzsh="vim ~/.oh-my-zsh"
 alias ccc="cc -Wall -Wextra -Werror"
 alias gcc="gcc -Wall -Wextra -Werror"
+alias cpp="c++ -Wall -Wextra -Werror"
 alias ggg="g++ -std=c++20"
 alias rr="rm -rf"
-alias vg="valgrind"
-alias vgll="valgrind --leak-check=full --show-leak-kindd=all --track-fds=yes"
+alias ra="rm -rf ./a.out"
+alias v="vim"
+alias vi="vim"
+alias vgll="valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes"
+alias vgv="valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --suppressions=readline.supp"
+alias vghg="valgrind --tool=helgrind"
+alias drd="valgrind --tool=helgrind --tool=drd"
+alias gitfalse="git config pull.rebase false"
+alias delsig="rm -rf ~/.config/google-chrome/Singleton*"
 alias cppsnippets="vim ~/.vim/bundle/vim-snippets/UltiSnips/cpp.snippets"
 alias csnippets="vim ~/.vim/bundle/vim-snippets/UltiSnips/c.snippets"
 alias cppupdate="cp ~/.vim/bundle/vim-snippets/UltiSnips/cpp.snippets ~/vimstuffs/."
@@ -48,7 +51,7 @@ alias vimupdate="cp ~/.vimrc ~/vimstuffs/vimrc"
 
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
-HYPHEN_INSENSITIVE="true"
+ HYPHEN_INSENSITIVE="true"
 
 # Uncomment one of the following lines to change the auto-update behavior
 # zstyle ':omz:update' mode disabled  # disable automatic updates
@@ -56,7 +59,7 @@ HYPHEN_INSENSITIVE="true"
 # zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-zstyle ':omz:update' frequency 30
+# zstyle ':omz:update' frequency 13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -118,6 +121,11 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-alias francinette=/Users/roychrltt/francinette/tester.sh
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
 
-alias paco=/Users/roychrltt/francinette/tester.sh
+alias francinette=/home/xiaxu/francinette/tester.sh
+
+alias paco=/home/xiaxu/francinette/tester.sh

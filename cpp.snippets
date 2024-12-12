@@ -147,8 +147,24 @@ snippet str
 std::string ${1:string}
 endsnippet
 
+snippet map
+std::map<$1, $2> map;
+endsnippet
+
+snippet umap
+std::unordered_map<$1, $2> map;
+endsnippet
+
 snippet ss
 std::stringstream ${1:string}
+endsnippet
+
+snippet rs
+std::ranges::sort($1);
+endsnippet
+
+snippet rsg
+std::ranges::sort($1, std::greater<>());
 endsnippet
 
 snippet v "std::vector (v)"
