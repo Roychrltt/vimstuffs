@@ -362,4 +362,33 @@ snippet color
 # define ERASE = "\033[2K\r"
 # define RESET "\033[0m"
 endsnippet
+
+snippet heap
+
+std::vector<int> heap;
+std::make_heap(heap.begin(), heap.end(), std::greater<>());
+
+std::pop_heap(heap.begin(), heap.end()); 
+heap.back() = ;
+std::push_heap(heap.begin(), heap.end());
+endsnippet
+
+snippet heappop
+
+std::vector<int> heap;
+std::make_heap(heap.begin(), heap.end(), std::greater<>());
+
+std::pop_heap(heap.begin(), heap.end()); 
+auto value = heap.back();
+heap.pop_back();
+value = ;
+heap.push_back(value);
+std::push_heap(heap.begin(), heap.end());
+
+endsnippet
+
+snippet osit
+std::copy($1.begin(), $1.end(), std::ostream_iterator<int>(std::cout, " "));
+endsnippet
+
 # vim:ft=snippets:
