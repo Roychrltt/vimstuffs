@@ -5,6 +5,8 @@ git clone `https://github.com/itchyny/lightline.vim ~/.vim/pack/plugins/start/li
 
 Repo for `nord.vim` plugin: ~/.vim/colors
 
+To install Nord terminal theme: `https://github.com/nordtheme/gnome-terminal`
+
 For terminal nord theme: `https://github.com/nordtheme/terminal-app`
 
 Do `:source ~/.vimrc` from within a vim file, not in the terminal.
