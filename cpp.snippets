@@ -391,4 +391,8 @@ snippet osit
 std::copy($1.begin(), $1.end(), std::ostream_iterator<int>(std::cout, " "));
 endsnippet
 
+snippet limit
+std::numeric_limits<${1:int}>::max();
+endsnippet
+
 # vim:ft=snippets:
