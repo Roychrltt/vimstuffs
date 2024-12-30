@@ -403,4 +403,18 @@ snippet dp
 std::vector<std::vector<int>> dp;
 endsnippet
 
+snippet dfs
+auto dfs = [&](this auto&& dfs, int i, int j) -> void
+{
+	$1
+};
+endsnippet
+
+snippet function
+std::function<void(int, int)> dfs = [&](int i, int j)
+{
+	$1
+};
+endsnippet
+
 # vim:ft=snippets:

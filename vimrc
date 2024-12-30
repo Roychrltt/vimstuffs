@@ -8,7 +8,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'arcticicestudio/nord-vim'
 
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -26,7 +25,6 @@ let g:lightline = {
       \ }
 
 call vundle#end()            " required
-
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
@@ -46,8 +44,6 @@ set autoindent
 set mouse=a
 set smartindent
 set backspace=indent,eol,start
-set termguicolors
-set background=light
 syntax on
 
 colorscheme nord
