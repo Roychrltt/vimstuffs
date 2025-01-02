@@ -5,7 +5,7 @@ To install lightline:
 
 Repo for `nord.vim` plugin: ~/.vim/colors
 
-To install Nord terminal theme on Linux: 
+To install Nord terminal theme on **Linux**: 
 
 `git clone https://github.com/nordtheme/gnome-terminal.git ~/gnome-terminal`
 
@@ -13,7 +13,7 @@ To install Nord terminal theme on Linux:
 
 `./nord.sh`
 
-To install Nord terminal theme on Mac: 
+To install Nord terminal theme on **Mac**: 
 
 `https://github.com/nordtheme/terminal-app`
 
