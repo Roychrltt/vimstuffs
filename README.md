@@ -21,6 +21,6 @@ Do `:source ~/.vimrc` from within a vim file, not in the terminal.
 
 Get vundle for Ultisnippets: `git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
 
-After adding plugins, do `:PluginInstall` within vim
+After adding plugins, do `:PluginInstall` in ~/.vimrc
 
 Use `vim --versioni | grep python` to check if `+python3` is supported.
