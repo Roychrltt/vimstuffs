@@ -417,4 +417,21 @@ std::function<void(int, int)> dfs = [&](int i, int j)
 };
 endsnippet
 
+snippet inputv
+int n;
+std::cin >> n;
+std::vector<int> v;
+v.reserve(n);
+for (int i = 0; i < n; i++)
+{
+	int tmp;
+	std::cin >> tmp;
+	v.push_back(tmp);
+}
+endsnippet
+
+snippet pq
+std::priority_queue<int, std::vector<int>, std::greater<int>> pq;
+endsnippet
+
 # vim:ft=snippets:
