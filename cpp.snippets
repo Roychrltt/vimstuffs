@@ -329,11 +329,7 @@ BOOST_AUTO_TEST_SUITE_END()
 endsnippet
 
 snippet cpp
-#include <iostream>
-#include <vector>
-#include <unordered_map>
-#include <algorithm>
-#include <string>
+#include <bits/stdc++.h>
 
 $0
 
@@ -420,13 +416,10 @@ endsnippet
 snippet inputv
 int n;
 std::cin >> n;
-std::vector<int> v;
-v.reserve(n);
+std::vector<int> v(n);
 for (int i = 0; i < n; i++)
 {
-	int tmp;
-	std::cin >> tmp;
-	v.push_back(tmp);
+	std::cin >> v[i];
 }
 endsnippet
 
@@ -435,18 +428,7 @@ std::priority_queue<int, std::vector<int>, std::greater<int>> pq;
 endsnippet
 
 snippet codechef
-#include <iostream>
-#include <iostream>
-#include <functional>
-#include <cmath>
-#include <ctime>
-#include <numeric>
-#include <iterator>
-#include <vector>
-#include <unordered_map>
-#include <algorithm>
-#include <string>
-#include <utility>
+#include <bits/stdc++.h>
 
 void	solve(std::vector<int>& v)
 {
