@@ -168,7 +168,7 @@ std::ranges::sort($1, std::greater<>());
 endsnippet
 
 snippet v "std::vector (v)"
-std::vector<${1:char}> v$0;
+std::vector<${1:int}> v$0;
 endsnippet
 
 snippet tp "template <typename ..> (template)"
@@ -484,6 +484,14 @@ snippet sync
 std::ios::sync_with_stdio(false);
 std::cin.tie(0);
 std::cout.tie(0);
+endsnippet
+
+snippet yes
+std::cout << "YES" << std::endl;
+endsnippet
+
+snippet no
+std::cout << "NO" << std::endl;
 endsnippet
 
 # vim:ft=snippets:
