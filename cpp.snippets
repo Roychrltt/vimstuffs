@@ -494,7 +494,7 @@ snippet no
 std::cout << "NO" << std::endl;
 endsnippet
 
-snippet cfsolve
+snippet cfs
 #include <bits/stdc++.h>
 
 static void solve(void)
@@ -518,4 +518,57 @@ int main()
 	return 0;
 }
 endsnippet
+
+snippet header
+#include <iostream>
+#include <utility>
+#include <string>
+#include <vector>
+#include <cmath>
+#include <unordered_map>
+#include <algorithm>
+#include <numeric>
+endsnippet
+
+snippet fori
+for (int ${2:i} = 0; $2 < ${1:count}; $2${3:++}) {
+	${4}
+}
+endsnippet
+
+snippet forir
+for (int ${2:i} = ${1:count}; $2 >= 0; $2${3:--}) {
+	${4}
+}
+endsnippet
+
+snippet forj
+for (int ${2:j} = 0; $2 < ${1:count}; $2${3:++}) {
+	${4}
+}
+endsnippet
+
+snippet forjr
+for (int ${2:j} = ${1:count}; $2 >= 0; $2${3:--}) {
+	${4}
+}
+endsnippet
+
+# static
+snippet sca
+static_cast<${1:unsigned}>(${2:expr})${3}
+endsnippet
+# dynamic
+snippet dca
+dynamic_cast<${1:unsigned}>(${2:expr})${3}
+endsnippet
+# reinterpret
+snippet rca
+reinterpret_cast<${1:unsigned}>(${2:expr})${3}
+endsnippet
+# const
+snippet cca
+const_cast<${1:unsigned}>(${2:expr})${3}
+endsnippet
+
 # vim:ft=snippets:
