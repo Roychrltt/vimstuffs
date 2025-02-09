@@ -3,7 +3,9 @@
 To install lightline:
 `git clone https://github.com/itchyny/lightline.vim ~/.vim/pack/plugins/start/lightline`
 
-Repo for `nord.vim` plugin: ~/.vim/colors
+Get `nord` colorscheme:
+
+Create repo for `nord.vim` plugin: ` mkdir ~/.vim/colors`, then copy the file into the repo
 
 To install Nord terminal theme on **Linux**: 
 
@@ -24,3 +26,5 @@ Get vundle for Ultisnippets: `git clone https://github.com/VundleVim/Vundle.vim.
 After adding plugins, do `:PluginInstall` in ~/.vimrc
 
 Use `vim --versioni | grep python` to check if `+python3` is supported.
+
+To install Oh-My-Zsh, the default shell needs to be zsh. After installing zsh, you should restart the machine.
