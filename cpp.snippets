@@ -103,6 +103,10 @@ snippet coutr
 std::cout << RED << ${1} << RESET << std::endl;
 endsnippet
 
+snippet coute
+std::cout << $1 << " ";
+endsnippet
+
 snippet up
 std::unique_ptr<${1:type}> ${2}
 endsnippet
@@ -168,7 +172,7 @@ std::ranges::sort($1, std::greater<>());
 endsnippet
 
 snippet v "std::vector (v)"
-std::vector<${1:int}> v$0;
+std::vector<${1:int}> v(${0:n});
 endsnippet
 
 snippet tp "template <typename ..> (template)"
@@ -424,7 +428,11 @@ for (int i = 0; i < n; i++)
 endsnippet
 
 snippet pq
-std::priority_queue<int, std::vector<int>, std::greater<int>> pq;
+std::priority_queue<$1> pq;
+endsnippet
+
+snippet pq_
+std::priority_queue<$1, std::vector<$1>, std::greater<$1>> pq;
 endsnippet
 
 snippet codechef
@@ -462,12 +470,7 @@ int main()
 	std::ios::sync_with_stdio(false);
 	std::cin.tie(0);
 	std::cout.tie(0);
-	int t;
-	std::cin >> t;
-	while (t--)
-	{
-		$0
-	}
+	$0
 	return 0;
 }
 endsnippet
@@ -569,6 +572,93 @@ endsnippet
 # const
 snippet cca
 const_cast<${1:unsigned}>(${2:expr})${3}
+endsnippet
+
+snippet vs
+std::vector<std::string> v(n)
+endsnippet
+
+snippet vl
+std::vector<long long int> v(n)
+endsnippet
+
+snippet vd
+std::vector<double> v(n)
+endsnippet
+
+snippet vc
+std::vector<char> v(n)
+endsnippet
+
+snippet vp
+std::vector<std::pair<$1, $2>> v(n)
+endsnippet
+
+snippet vv
+std::vector<std::vector<$1>> v(n, std::vector<$1>($2));
+endsnippet
+
+snippet ll
+long long int
+endsnippet
+
+snippet ull
+unsigned long long int
+endsnippet
+
+snippet ui
+unsigned int
+endsnippet
+
+snippet zu
+size_t
+endsnippet
+
+snippet pb
+$1.push_back($2)
+endsnippet
+
+snippet ppb
+$1.pop_back($2)
+endsnippet
+
+snippet size
+int n = $1.size();
+endsnippet
+
+snippet len
+int n = $1.length();
+endsnippet
+
+snippet lbd
+std::lower_bound($1.begin(), $1.end(), $2);
+endsnippet
+
+snippet ubd
+std::ubd_bound($1.begin(), $1.end(), $2);
+endsnippet
+
+snippet end
+{
+	std::cout << $0 << std::endl;
+	return;
+}
+endsnippet
+
+snippet btp
+__builtin_popcount($1)
+endsnippet
+
+snippet ctz
+__builtin_ctz($1)
+endsnippet
+
+snippet clz
+__builtin_clz($1)
+endsnippet
+
+snippet parity
+__builtin_parity($1)
 endsnippet
 
 # vim:ft=snippets:
