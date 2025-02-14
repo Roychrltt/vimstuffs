@@ -14,7 +14,7 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsUsePythonVersion = 3
 
-let g:python3_host_prog = '/opt/homebrew/opt/python@3.13/bin/python3.13'
+let g:python3_host_prog = '/opt/homebrew/bin/python3'
 
 Plugin 'itchyny/lightline.vim'
 
