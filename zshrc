@@ -1,5 +1,6 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+
+export PATH="/opt/homebrew/opt/python@3.13/Frameworks/Python.framework/Versions/3.13/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -43,6 +44,11 @@ alias zshupdate="cp ~/.zshrc ~/vimstuffs/zshrc"
 alias zshpull="cp ~/vimstuffs/zshrc ~/.zshrc"
 alias vimupdate="cp ~/.vimrc ~/vimstuffs/vimrc"
 alias vimpull="cp ~/vimstuffs/vimrc ~/.vimrc"
+
+# git log -p -2 (to see the last 2 entries for the commits)
+# git log --stat (to see commits in a summarised way)
+# git log --pretty=oneline (to see all commits in one line, for searching for a specific commit)
+# git log --pretty=format:"%h - %an, %ar : %s" (list commits in a certain format, abbreviated commit hash, author name, relative commit time, subject)
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
