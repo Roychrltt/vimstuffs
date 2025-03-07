@@ -1,5 +1,5 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set nocompatible              
+filetype off                 
 
 set rtp+=~/.vim/bundle/Vundle.vim
 
@@ -8,6 +8,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'preservim/nerdtree'
 
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -46,4 +47,11 @@ set smartindent
 set backspace=indent,eol,start
 syntax on
 
+inoremap <c-b> :NERDTree<CR>
+nnoremap <c-b> :NERDTree<CR>
+inoremap <c-t> :NERDTreeToggle<CR>
+nnoremap <c-t> :NERDTreeToggle<CR>
+
+
 colorscheme nord
+
