@@ -12,7 +12,7 @@ syntax on
 filetype off                 
 
 if &term =~ "xterm\\|rxvt\\|alacritty\\|tmux"
-    let &t_SI = "\e[4 q"  " Set underscore cursor in insert mode
+    let &t_SI = "\e[6 q"  " Set vertical bar cursor in insert mode
     let &t_EI = "\e[6 q"  " Set vertical bar cursor in normal mode
 endif
 
