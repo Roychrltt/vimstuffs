@@ -11,6 +11,11 @@ set laststatus=2
 syntax on
 filetype off                 
 
+if &term =~ "xterm\\|rxvt\\|alacritty\\|tmux"
+    let &t_SI = "\e[4 q"  " Set underscore cursor in insert mode
+    let &t_EI = "\e[6 q"  " Set vertical bar cursor in normal mode
+endif
+
 set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin()
@@ -34,5 +39,5 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsUsePythonVersion = 3
 let g:python3_host_prog = '/opt/homebrew/opt/python@3.13/bin/python3.13'
 let g:lightline = {
-      \ 'colorscheme': 'Tomorrow_Night_Blue'
-      \ }
+			\ 'colorscheme': 'Tomorrow_Night_Blue'
+			\ }
