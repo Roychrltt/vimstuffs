@@ -29,8 +29,6 @@ filetype plugin indent on
 
 inoremap <c-b> :NERDTree<CR>
 nnoremap <c-b> :NERDTree<CR>
-inoremap <c-t> :NERDTreeToggle<CR>
-nnoremap <c-t> :NERDTreeToggle<CR>
 colorscheme nord
 
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -41,3 +39,5 @@ let g:python3_host_prog = '/opt/homebrew/opt/python@3.13/bin/python3.13'
 let g:lightline = {
 			\ 'colorscheme': 'Tomorrow_Night_Blue'
 			\ }
+nnoremap <C-t> :vert term<CR><C-w>L
+inoremap <C-t> :vert term<CR><C-w>L
