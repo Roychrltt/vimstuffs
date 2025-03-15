@@ -30,12 +30,12 @@ endglobal
 ###########################################################################
 #                            TextMate Snippets                            #
 ###########################################################################
-snippet ponce "#pragma once include guard"
+snippet ponce "" i 
 #pragma once
 
 endsnippet
 
-snippet main
+snippet main "" i
 int main(int argc, char *argv[])
 {
 	${0}
@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
 }
 endsnippet
 
-snippet mainn
+snippet mainn "" i
 int main(void)
 {
 	${0}
@@ -51,32 +51,32 @@ int main(void)
 }
 endsnippet
 
-snippet forc "general for loop (for)"
+snippet forc "" i 
 for (${6:auto} ${1:i} = ${2:v.begin()}; `!p import re; snip.rv = re.split("[^\w]",t[1])[-1]` ${4:!=} ${3:`!p m = re.search(r'^(?:(.*)(\.|->)begin\(\)|((?:std|boost)::)?begin\((.*)\))$', t[2]); snip.rv = (((m.group(3) if m.group(3) else "") + "end(" + m.group(4) + ")") if m.group(4) else (m.group(1) + m.group(2) + "end()")) if m else ""`}; ${5:++`!p snip.rv = t[1].split(" ")[-1]`}) {
 	${VISUAL}$0
 }
 endsnippet
 
-snippet beginend "$1.begin(), $1.end() (beginend)"
+snippet beginend "" i
 ${1:v}${1/^.*?(-)?(>)?$/(?2::(?1:>:.))/}begin(), $1${1/^.*?(-)?(>)?$/(?2::(?1:>:.))/}end()
 endsnippet
 
-snippet ns "namespace .. (namespace)"
+snippet ns "" i
 namespace${1/.+/ /m}${1:`!p snip.rv = snip.basename or "name"`}
 {
 	${VISUAL}$0
 }${1/.+/ \/* /m}$1${1/.+/ *\/ /m}
 endsnippet
 
-snippet nsa "namespace alias"
+snippet nsa "" i 
 namespace ${1:alias} = ${2:namespace};
 endsnippet
 
-snippet using "using directive/using declaration/type alias"
+snippet using "" i
 using ${1:namespace}`!p snip.rv = ' ' if t[1] == 'namespace' else ' = ' if t[1] != '' else ''`${2:name};
 endsnippet
 
-snippet readfile "read file (readF)"
+snippet readfile "" i 
 std::vector<char> v;
 if (FILE *fp = fopen(${1:"filename"}, "r"))
 {
@@ -87,99 +87,99 @@ if (FILE *fp = fopen(${1:"filename"}, "r"))
 }
 endsnippet
 
-snippet coutdef
+snippet coutdef "" i
 std::cout << GRAY << "[${1:className}] default constructor get called" << RESET << std::endl;
 endsnippet
 
-snippet coutg
+snippet coutg "" i
 std::cout << GREEN << ${1} << RESET << std::endl;
 endsnippet
 
-snippet cerr
+snippet cerr "" i
 std::cerr << ${1} << std::endl;
 endsnippet
 
-snippet coutr
+snippet coutr "" i
 std::cout << RED << ${1} << RESET << std::endl;
 endsnippet
 
-snippet coute
+snippet coute "" i
 std::cout << $1 << " ";
 endsnippet
 
-snippet up
+snippet up "" i
 std::unique_ptr<${1:type}> ${2}
 endsnippet
 
-snippet mu
+snippet mu "" i
 std::make_unique<${1:type}>
 endsnippet
 
-snippet sp
+snippet sp "" i
 std::shared_ptr<${1:type}>
 endsnippet
 
-snippet ms
+snippet ms "" i
 std::make_shared<${1:type}>
 endsnippet
 
-snippet wp
+snippet wp "" i
 std::weak_ptr<${1:type}> $2
 endsnippet
 
-snippet map "std::map (map)"
+snippet map "" i 
 std::map<${1:key}, ${2:value}> map$0;
 endsnippet
 
-snippet tup
+snippet tup "" i
 std::tuple <${1:tuple}>
 endsnippet
 
-snippet mt
+snippet mt "" i
 std::make_tuple (${1:tuple});
 endsnippet
 
-snippet ifs
+snippet ifs "" i
 std::ifstream ${1:string}
 endsnippet
 
-snippet ofs
+snippet ofs "" i
 std::ofstream ${1:string}
 endsnippet
 
-snippet str
+snippet str "" i
 std::string ${1:string}
 endsnippet
 
-snippet map
+snippet map "" i
 std::map<$1, $2> map;
 endsnippet
 
-snippet umap
+snippet umap "" i
 std::unordered_map<$1, $2> map;
 endsnippet
 
-snippet ss
+snippet ss "" i
 std::stringstream ${1:string}
 endsnippet
 
-snippet rs
+snippet rs "" i
 std::ranges::sort($1);
 endsnippet
 
-snippet rsg
+snippet rsg "" i
 std::ranges::sort($1, std::greater<>());
 endsnippet
 
-snippet v "std::vector (v)"
+snippet v "" i 
 std::vector<${1:int}> v(${0:n});
 endsnippet
 
-snippet tp "template <typename ..> (template)"
+snippet tp "" i 
 template <typename ${1:_InputIter}>
 endsnippet
 
-snippet cl "class .. (class)"
+snippet cl "" i 
 class ${1:`!p snip.rv = snip.basename or "name"`}
 {
 	private:
@@ -197,7 +197,7 @@ class ${1:`!p snip.rv = snip.basename or "name"`}
 };
 endsnippet
 
-snippet classimp "class implementation"
+snippet classimp "" i 
 #include "${1:`!p snip.rv = snip.basename or "name"`}.hpp"
 
 ${1/(\w+).*/$1/}::${1/(\w+).*/$1/}(void)
@@ -229,7 +229,7 @@ ${1/(\w+).*/$1/} &${1/(\w+).*/$1/}::operator=(const ${1/(\w+).*/$1/} &other)
 }
 endsnippet
 
-snippet cla "An entire .hpp generator" b
+snippet cla "" i 
 #ifndef ${2:`!v substitute(vim_snippets#Filename('$1_HPP','ClassName'),'.*','\U&\E','')`}
 #define $2
 
@@ -255,7 +255,7 @@ class ${1:`!v substitute(substitute(vim_snippets#Filename('$1','ClassName'),'^.'
 #endif /* $2 */
 endsnippet
 
-snippet fnc "Basic c++ doxygen function template" b
+snippet fnc "" i 
 /**
 * @brief: ${4:brief}
 *
@@ -269,7 +269,7 @@ ${1:ReturnType} ${2:FunctionName}(${3:param})
 }
 endsnippet
 
-snippet boost_test "Boost test module" b
+snippet boost_test "" i
 #define BOOST_TEST_MODULE ${1:TestModuleName}
 #include <boost/test/included/unit_test.hpp>
 
@@ -280,7 +280,7 @@ BOOST_AUTO_TEST_CASE(${2:TestCaseName})
 
 endsnippet
 
-snippet boost_suite "Boost test suite module" b
+snippet boost_suite "" i 
 #define BOOST_TEST_MODULE ${1:TestModuleName}
 #include <boost/test/included/unit_test.hpp>
 
@@ -294,7 +294,7 @@ BOOST_AUTO_TEST_CASE(${3:TestCaseName})
 BOOST_AUTO_TEST_SUITE_END()
 
 endsnippet
-snippet boost_test_fixture "Boost test module with fixture" b
+snippet boost_test_fixture "" i 
 #define BOOST_TEST_MODULE ${1:TestModuleName}
 #include <boost/test/included/unit_test.hpp>
 
@@ -311,7 +311,7 @@ BOOST_FIXTURE_TEST_CASE(${3:SuiteName}, $2)
 
 endsnippet
 
-snippet boost_suite_fixture "Boost test suite with fixture" b
+snippet boost_suite_fixture "" i 
 #define BOOST_TEST_MODULE ${1:TestModuleName}
 #include <boost/test/included/unit_test.hpp>
 
@@ -332,7 +332,7 @@ BOOST_AUTO_TEST_SUITE_END()
 
 endsnippet
 
-snippet cpp
+snippet cpp "" i
 #include <bits/stdc++.h>
 
 $0
@@ -348,7 +348,7 @@ int main()
 // memory beats %
 endsnippet
 
-snippet color
+snippet color "" i
 # define RED "\033[31m"
 # define GREEN "\033[32m"
 # define YELLOW "\033[33m"
@@ -363,7 +363,7 @@ snippet color
 # define RESET "\033[0m"
 endsnippet
 
-snippet heap
+snippet heap "" i
 
 std::vector<int> heap;
 std::make_heap(heap.begin(), heap.end(), std::greater<>());
@@ -373,7 +373,7 @@ heap.back() = ;
 std::push_heap(heap.begin(), heap.end());
 endsnippet
 
-snippet heappop
+snippet heappop "" i
 
 std::vector<int> heap;
 std::make_heap(heap.begin(), heap.end(), std::greater<>());
@@ -387,37 +387,37 @@ std::push_heap(heap.begin(), heap.end());
 
 endsnippet
 
-snippet osit
+snippet osit "" i
 std::copy($1.begin(), $1.end(), std::ostream_iterator<int>(std::cout, " "));
 endsnippet
 
-snippet limit
+snippet limit "" i
 std::numeric_limits<${1:int}>::max();
 endsnippet
 
-snippet coutbool
+snippet coutbool "" i
 std::cout << std::boolalpha << $1 << std::endl;
 endsnippet
 
-snippet dp
+snippet dp "" i
 std::vector<std::vector<int>> dp;
 endsnippet
 
-snippet dfs
+snippet dfs "" i
 auto dfs = [&](this auto&& dfs, int i, int j) -> void
 {
 	$1
 };
 endsnippet
 
-snippet function
+snippet function "" i
 std::function<void(int, int)> dfs = [&](int i, int j)
 {
 	$1
 };
 endsnippet
 
-snippet inputv
+snippet inputv "" i
 int n;
 std::cin >> n;
 std::vector<int> v(n);
@@ -427,15 +427,15 @@ for (int i = 0; i < n; i++)
 }
 endsnippet
 
-snippet pq
+snippet pq "" i
 std::priority_queue<$1> pq;
 endsnippet
 
-snippet pq_
+snippet pq_ "" i
 std::priority_queue<$1, std::vector<$1>, std::greater<$1>> pq;
 endsnippet
 
-snippet codechef
+snippet codechef "" i
 #include <bits/stdc++.h>
 
 void	solve(std::vector<int>& v)
@@ -462,7 +462,7 @@ int main(void)
 }
 endsnippet
 
-snippet cf
+snippet cf "" i
 #include <bits/stdc++.h>
 #define __Made return
 #define in 0
@@ -478,29 +478,33 @@ int main()
 }
 endsnippet
 
-snippet sort
+snippet sort "" i
 std::sort(${1:v}.begin(), ${1:v}.end());
 endsnippet
 
-snippet accumulate
+snippet sortr "" i
+std::sort(${1:v}.begin(), ${1:v}.end(), std::greater<>());
+endsnippet
+
+snippet accumulate "" i
 std::accumulate(${1}.begin(), ${1}.end(), 0);
 endsnippet
 
-snippet sync
+snippet sync "" i
 std::ios::sync_with_stdio(false);
 std::cin.tie(0);
 std::cout.tie(0);
 endsnippet
 
-snippet yes
+snippet yes "" i
 std::cout << "YES" << std::endl;
 endsnippet
 
-snippet no
+snippet no "" i
 std::cout << "NO" << std::endl;
 endsnippet
 
-snippet cfs
+snippet cfs "" i
 #include <bits/stdc++.h>
 #define __Made return
 #define in 0
@@ -528,7 +532,7 @@ int main()
 }
 endsnippet
 
-snippet header
+snippet header "" i
 #include <iostream>
 #include <utility>
 #include <string>
@@ -539,143 +543,151 @@ snippet header
 #include <numeric>
 endsnippet
 
-snippet fori
+snippet fori "" i
 for (int ${2:i} = 0; $2 < ${1:count}; $2${3:++}) {
 	${4}
 }
 endsnippet
 
-snippet forir
+snippet forir "" i
 for (int ${2:i} = ${1:count}; $2 >= 0; $2${3:--}) {
 	${4}
 }
 endsnippet
 
-snippet forj
+snippet forj "" i
 for (int ${2:j} = 0; $2 < ${1:count}; $2${3:++}) {
 	${4}
 }
 endsnippet
 
-snippet forjr
+snippet forjr "" i
 for (int ${2:j} = ${1:count}; $2 >= 0; $2${3:--}) {
 	${4}
 }
 endsnippet
 
 # static
-snippet sca
+snippet sca "" i
 static_cast<${1:unsigned}>(${2:expr})${3}
 endsnippet
 # dynamic
-snippet dca
+snippet dca "" i
 dynamic_cast<${1:unsigned}>(${2:expr})${3}
 endsnippet
 # reinterpret
-snippet rca
+snippet rca "" i
 reinterpret_cast<${1:unsigned}>(${2:expr})${3}
 endsnippet
 # const
-snippet cca
+snippet cca "" i
 const_cast<${1:unsigned}>(${2:expr})${3}
 endsnippet
 
-snippet vs
+snippet vs "" i
 std::vector<std::string> v(n)
 endsnippet
 
-snippet vl
+snippet vl "" i
 std::vector<long long int> v(n)
 endsnippet
 
-snippet vd
+snippet vd "" i
 std::vector<double> v(n)
 endsnippet
 
-snippet vc
+snippet vc "" i
 std::vector<char> v(n)
 endsnippet
 
-snippet vp
+snippet vp "" i
 std::vector<std::pair<$1, $2>> v(n)
 endsnippet
 
-snippet vv
+snippet vv "" i
 std::vector<std::vector<$1>> v(n, std::vector<$1>($2));
 endsnippet
 
-snippet ll
+snippet ll "" i
 long long int
 endsnippet
 
-snippet ull
+snippet ull "" i
 unsigned long long int
 endsnippet
 
-snippet ui
+snippet ui "" i
 unsigned int
 endsnippet
 
-snippet zu
+snippet zu "" i
 size_t
 endsnippet
 
-snippet pb
+snippet pb "" i
 $1.push_back($2)
 endsnippet
 
-snippet ppb
+snippet ppb "" i
 $1.pop_back($2)
 endsnippet
 
-snippet size
+snippet size "" i
 int n = $1.size();
 endsnippet
 
-snippet len
+snippet len "" i
 int n = $1.length();
 endsnippet
 
-snippet lbd
+snippet lbd "" i
 std::lower_bound($1.begin(), $1.end(), $2);
 endsnippet
 
-snippet ubd
+snippet ubd "" i
 std::ubd_bound($1.begin(), $1.end(), $2);
 endsnippet
 
-snippet end
+snippet end "" i
 {
 	std::cout << $0 << std::endl;
 	return;
 }
 endsnippet
 
-snippet btp
+snippet btp "" i
 __builtin_popcount($1)
 endsnippet
 
-snippet ctz
+snippet ctz "" i
 __builtin_ctz($1)
 endsnippet
 
-snippet clz
+snippet clz "" i
 __builtin_clz($1)
 endsnippet
 
-snippet parity
+snippet parity "" i
 __builtin_parity($1)
 endsnippet
 
-snippet npos
+snippet npos "" i
 std::string::npos
 endsnippet
 
-snippet max 
+snippet max "" i
 std::max($1, $2);
 endsnippet
 
-snippet min
+snippet min "" i
 std::min($1, $2);
+endsnippet
+
+snippet minel "" i
+*min_element(${1:v}.begin(), ${1}.end());
+endsnippet
+
+snippet maxel "" i
+*max_element(${1:v}.begin(), ${1}.end());
 endsnippet
 # vim:ft=snippets:
