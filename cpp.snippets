@@ -151,11 +151,7 @@ snippet str "" i
 std::string ${1:string}
 endsnippet
 
-snippet map "" i
-std::map<$1, $2> map;
-endsnippet
-
-snippet umap "" i
+snippet um "" i
 std::unordered_map<$1, $2> map;
 endsnippet
 
@@ -645,7 +641,7 @@ std::lower_bound($1.begin(), $1.end(), $2);
 endsnippet
 
 snippet ubd "" i
-std::ubd_bound($1.begin(), $1.end(), $2);
+std::upper_bound($1.begin(), $1.end(), $2);
 endsnippet
 
 snippet end "" i
@@ -671,23 +667,27 @@ snippet parity "" i
 __builtin_parity($1)
 endsnippet
 
-snippet npos "" i
+snippet npos ""
 std::string::npos
 endsnippet
 
-snippet max "" i
+snippet max ""
 std::max($1, $2);
 endsnippet
 
-snippet min "" i
+snippet min ""
 std::min($1, $2);
 endsnippet
 
-snippet minel "" i
+snippet minel ""
 *min_element(${1:v}.begin(), ${1}.end());
 endsnippet
 
-snippet maxel "" i
+snippet maxel ""
 *max_element(${1:v}.begin(), ${1}.end());
+endsnippet
+
+snippet getline "" i
+std::getline(std::cin, ${1: name})
 endsnippet
 # vim:ft=snippets:
