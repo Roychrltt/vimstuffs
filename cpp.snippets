@@ -399,10 +399,50 @@ snippet dp "" i
 std::vector<std::vector<int>> dp;
 endsnippet
 
+snippet course
+std::vector<int> findOrder(int n, std::vector<std::vector<int>>& pres) {
+	std::vector<std::vector<int>> graph(n);
+	std::vector<int> inDegree(n, 0);
+
+	for (const auto& c : pres) {
+		graph[c[1]].push_back(c[0]);
+		inDegree[c[0]]++;
+	}
+
+	std::queue<int> q;
+	for (int i = 0; i < n; i++)
+		if (inDegree[i] == 0) q.push(i);
+
+	std::vector<int> order;
+	while (!q.empty()) {
+		int course = q.front();
+		q.pop();
+		order.push_back(course);
+
+		for (int neighbour : graph[course]) {
+			inDegree[neighbour]--;
+			if (inDegree[neighbour] == 0)
+				q.push(neighbour);
+		}
+	}
+	if (order.size() == n)
+		return order;
+	return {};
+}
+endsnippet
+
 snippet dfs "" i
-auto dfs = [&](this auto&& dfs, int i, int j) -> void
+auto dfs = [&](this auto&& dfs, int i) -> void
 {
-	$1
+	if (i == n) return true;
+
+	for (int i = 0; i < n; i++)
+	{
+		if (vis[i]) continue;
+		vis[i] = true;
+		dfs(i + 1);
+		vis[i] = false;
+	}
 };
 endsnippet
 
@@ -413,7 +453,140 @@ std::function<void(int, int)> dfs = [&](int i, int j)
 };
 endsnippet
 
-snippet inputv "" i
+snippet coini
+std::vector<int> dp(amount + 1, amount + 1);
+dp[0] = 0;
+for (int i = 1; i <= amount; ++i) {
+	for (int coin : coins) {
+		if (coin <= i)
+			dp[i] = min(dp[i], dp[i - coin] + 1);
+	}
+}
+return dp[amount] > amount ? -1 : dp[amount];
+endsnippet
+
+snippet coinii
+std::vector<unsigned long long> dp(amount + 1);
+dp[0] = 1;
+for (int c : coins)
+	for (int i = c; i <= amount; i++)
+		dp[i] += dp[i - c];
+
+return dp[amount];
+endsnippet
+
+snippet bfs
+std::vector<std::vector<int>> updateMatrix(std::vector<std::vector<int>>& matrix) {
+	int m = matrix.size(), n = matrix[0].size();
+	std::vector<std::vector<int>> ans(m, std::vector<int>(n));
+	std::vector<std::vector<int>> visited(m, std::vector<int>(n));
+	std::queue<std::pair<int, int>> q;
+
+	for (int i = 0; i < m; ++i) {
+		for (int j = 0; j < n; ++j) {
+			if (matrix[i][j] == 0) {
+				q.emplace(i, j);
+				visited[i][j] = 1;
+			}
+		}
+	}
+
+	while (!q.empty()) {
+		auto [i, j] = q.front();
+		q.pop();
+		for (auto [dx, dy] : dirs)
+		{
+			int ni = i + dx;
+			int nj = j + dy;
+			if (ni >= 0 && ni < m && nj >= 0 && nj < n && !visited[ni][nj]) {
+				ans[ni][nj] = ans[i][j] + 1;
+				q.emplace(ni, nj);
+				visited[ni][nj] = 1;
+			}
+		}
+	}
+
+	return ans;
+}
+endsnippet
+
+snippet dijkstra
+using std::pair<int, int> pii
+
+// adj is an already_built graph
+void dijkstra(int start, int dst, const std::vector<std::vector<pii>>& adj) {
+	std::vector<int> dist(dst + 1, INF); 
+	std::priority_queue<pii, std::vector<pii>, std::greater<pii>> pq;
+
+	dist[start] = 0;
+	pq.push({start, 0});
+
+	while (!pq.empty()) {
+		auto [d, node] = pq.top();
+		pq.pop();
+
+		if (d > dist[node]) continue; 
+
+		for (const auto& [neighbour, time] : adj[node]) {
+			if (dist[node] + time < dist[neighbour]) {
+				dist[neighbour] = dist[node] + time;
+				pq.push(dist[neighbour], neighbour);
+			}
+		}
+	}
+
+	for (int i = 1; i <= dst; i++)
+		std::cout << dist[i] << " ";
+	std::cout << "\n";
+}
+endsnippet
+
+snippet unionfind
+class DSU {
+	std::vector<int> v1, v2;
+
+	DSU(int n)
+	{
+		v1.resize(n);
+		v2.resize(n, 0);
+		for (int i = 0; i < n; ++i)
+			v1[i] = i;
+	}
+
+	int find(int i)
+	{
+		if (v1[i] != i)
+			v1[i] = find(v1[i]);
+		return v1[i];
+	}
+
+
+	void unite(int i, int k)
+	{
+		int a = find(i);
+		int b = find(k);
+		if (a != b)
+		{
+			if (v2[a] > v2[b])
+				v1[b] = a;
+			else if (v2[a] < v2[b])
+				v1[a] = b;
+			else
+			{
+				v1[b] = a;
+				v2[a]++;
+			}
+		}
+	}
+
+	bool is_same_set(int a, int b)
+	{
+		return find(a) == find(b);
+	}
+};
+endsnippet
+
+snippet inputv
 int n;
 std::cin >> n;
 std::vector<int> v(n);
@@ -427,7 +600,7 @@ snippet pq "" i
 std::priority_queue<$1> pq;
 endsnippet
 
-snippet pqr "" i
+snippet pq_ "" i
 std::priority_queue<$1, std::vector<$1>, std::greater<$1>> pq;
 endsnippet
 
@@ -470,7 +643,7 @@ int main()
 	std::cin.tie(0);
 	std::cout.tie(0);
 	$0
-	__Made in France__
+		__Made in France__
 }
 endsnippet
 
@@ -621,11 +794,15 @@ size_t
 endsnippet
 
 snippet pb "" i
-$1.push_back($2)
+push_back($1)
+endsnippet
+
+snippet eb "" i
+emplace_back($1)
 endsnippet
 
 snippet ppb "" i
-$1.pop_back($2)
+pop_back($1)
 endsnippet
 
 snippet size "" i
@@ -644,10 +821,10 @@ snippet ubd "" i
 std::upper_bound($1.begin(), $1.end(), $2);
 endsnippet
 
-snippet end "" i
+snippet end
 {
-	std::cout << $0 << std::endl;
-	return;
+std::cout << $0 << std::endl;
+return;
 }
 endsnippet
 
@@ -671,23 +848,84 @@ snippet npos ""
 std::string::npos
 endsnippet
 
-snippet max ""
+snippet max "" i
 std::max($1, $2);
 endsnippet
 
-snippet min ""
+snippet min "" i
 std::min($1, $2);
 endsnippet
 
-snippet minel ""
+snippet minel "" i
 *min_element(${1:v}.begin(), ${1}.end());
 endsnippet
 
-snippet maxel ""
+snippet maxel "" i
 *max_element(${1:v}.begin(), ${1}.end());
 endsnippet
 
 snippet getline "" i
 std::getline(std::cin, ${1: name})
 endsnippet
+
+snippet kmp
+std::vector<int> computeLPS(const std::string& pattern) {
+	int n = pattern.size();
+	std::vector<int> lps(n, 0);
+	int len = 0;
+	int i = 1;
+
+	while (i < n)
+	{
+		if (pattern[i] == pattern[len])
+			lps[i++] = ++len;
+		else
+		{
+			if (len > 0) len = lps[len - 1];
+			else i++;
+		}
+	}
+	return lps;
+}
+
+void	kmp(const std::string& pattern, const std::string& text, std::vector<int>& v)
+{
+	if (pattern == "")
+	{
+		v.resize(text.length());
+		std::iota(v.begin(), v.end(), 0);
+		return;
+	}
+
+	int n = text.size(), m = pattern.size();
+	std::vector<int> lps = computeLPS(pattern);
+	int i = 0, j = 0;
+	while (i < n)
+	{
+		if (text[i] == pattern[j])
+		{
+			i++;
+			j++;
+		}
+		if (j == m)
+		{
+			v.push_back(i - j);
+			j = lps[j - 1];
+		}
+		else if (i < n && text[i] != pattern[j])
+		{
+			if (j > 0)
+				j = lps[j - 1];
+			else
+				i++;
+		}
+	}
+}
+endsnippet
+
+snippet opti
+#pragma GCC optimize("O3,unroll-loops,fast-math")
+#pragma GCC target("avx,avx2,fma")
+endsnippet
+
 # vim:ft=snippets:
