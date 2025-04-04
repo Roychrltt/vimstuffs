@@ -753,6 +753,10 @@ snippet cca "" i
 const_cast<${1:unsigned}>(${2:expr})${3}
 endsnippet
 
+snippet pii "" i
+std::pair<int, int>
+endsnippet
+
 snippet vs "" i
 std::vector<std::string> v(n)
 endsnippet
@@ -945,6 +949,23 @@ std::vector<int> findPrime(int n)
 	}
 	return primes;
 }
+endsnippet
+
+snippet time
+auto start = std::chrono::high_resolution_clock::now();
+solve();
+auto end = std::chrono::high_resolution_clock::now();
+
+double duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
+std::cout << "Execution Time: " << duration / 1e6 << " seconds\n";
+endsnippet
+
+snippet pie
+3.1415926535 8979323846 2643383279 5028841971 6939937510 5820974944 5923078164 0628620899 8628034825 3421170679
+endsnippet
+
+snippet precision
+std::cout << std::fixed << std::setprecision($0) << $1 << std::endl;
 endsnippet
 
 # vim:ft=snippets:
