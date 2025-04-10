@@ -968,4 +968,61 @@ snippet precision
 std::cout << std::fixed << std::setprecision($0) << $1 << std::endl;
 endsnippet
 
+snippet quicksort
+void	quicksort(std::vector<int>& v, int l, int r)
+{
+	if (l >= r) return;
+	int ll = l, rr = r, k = v[l];
+	while (l < r)
+	{
+		while (r > l && v[r] >= k) r--;
+		v[l] = v[r];
+		while (l < r && v[l] <= k) l++;
+		v[r] = v[l];
+	}
+	v[l] = k;
+	quicksort(v, ll, l - 1);
+	quicksort(v, r + 1, rr);
+}
+endsnippet
+
+snippet bit
+struct FenwickTreeOneBasedIndexing {
+	vector<int> bit;
+	int n;
+
+	FenwickTreeOneBasedIndexing(int n) {
+		this->n = n + 1;
+		bit.assign(n + 1, 0);
+	}
+
+	FenwickTreeOneBasedIndexing(const vector<int>& v)
+		: FenwickTreeOneBasedIndexing(v.size()) {
+			for (size_t i = 0; i < v.size(); i++)
+				add(i, v[i]);
+		}
+
+	int sum(int i) {
+		int ans = 0;
+		while (i > 0)
+		{
+			ans += bit[i];
+			i -= i & -i;
+		}
+		return ans;
+	}
+
+	int sum(int l, int r) {
+		return sum(r) - sum(l - 1);
+	}
+
+	void add(int i, int d) {
+		while (i < n)
+		{
+			bit[i] += d;
+			i += i & -i;
+		}
+	}
+};
+endsnippet
 # vim:ft=snippets:
