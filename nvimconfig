@@ -1,0 +1,53 @@
+" General settings
+set number
+set tabstop=4
+set shiftwidth=4
+set autoindent
+set smartindent
+set mouse=a
+set backspace=indent,eol,start
+set encoding=UTF-8
+set laststatus=2
+set display+=truncate
+syntax on
+filetype plugin indent on
+
+" NOTE: filetype off is unnecessary in Neovim
+
+" Cursor shape in terminal (not needed in Neovim, but kept as comment)
+" if &term =~ "xterm\\|rxvt\\|alacritty\\|tmux"
+"     let &t_SI = "\e[6 q"  " Set vertical bar cursor in insert mode
+"     let &t_EI = "\e[6 q"  " Set vertical bar cursor in normal mode
+" endif
+
+" Vundle setup
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'preservim/nerdtree'
+Plugin 'itchyny/lightline.vim'
+call vundle#end()
+
+" Mappings
+inoremap <C-b> :NERDTree<CR>
+nnoremap <C-b> :NERDTree<CR>
+nnoremap <C-t> :vert term<CR><C-w>L
+inoreap <C-t> :vert term<CR><C-w>L
+
+" Colorscheme
+colorscheme nord
+
+" UltiSnips settings
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<C-b>"
+let g:UltiSnipsJumpBackwardTrigger = "<C-z>"
+let g:UltiSnipsUsePythonVersion = 3
+let g:python3_host_prog = '/opt/homebrew/opt/python@3.13/bin/python3.13'
+
+" Lightline config
+let g:lightline = {
+      \ 'colorscheme': 'Tomorrow_Night_Blue'
+      \ }
+
