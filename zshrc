@@ -1,6 +1,7 @@
 # If you come from bash you might have to change your $PATH.
 
-export PATH="/opt/homebrew/opt/python@3.13/Frameworks/Python.framework/Versions/3.13/bin:$PATH"
+export NVIMPATH="/home/xiaxu/vimstuffs/nvim-linux64/bin"
+export PATH="/opt/homebrew/opt/python@3.13/Frameworks/Python.framework/Versions/3.13/bin:$PATH:$NVIMPATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"

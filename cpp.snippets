@@ -1029,4 +1029,17 @@ endsnippet
 snippet iota
 std::iota(${1}.begin(), ${1}.end(), 0);
 endsnippet
+
+snippet monostack
+for (int i = n - 1; i >= 0; i--)
+	{
+		while (!s.empty() && heights[s.back()] > heights[i])
+		{
+			int idx = s.back();
+			s.pop_back();
+			left[idx] = idx - i - 1;
+		}
+		s.push_back(i);
+	}
+endsnippet
 # vim:ft=snippets:
