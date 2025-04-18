@@ -8,7 +8,6 @@ set smartindent
 set backspace=indent,eol,start
 set encoding=UTF-8
 set laststatus=2
-set display+=truncate
 syntax on
 filetype off                 
 
