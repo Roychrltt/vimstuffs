@@ -648,15 +648,15 @@ int main()
 endsnippet
 
 snippet sort "" i
-std::sort(${1:v}.begin(), ${1:v}.end());
+std::sort($1.begin(), $1.end());
 endsnippet
 
 snippet sortr "" i
-std::sort(${1:v}.begin(), ${1:v}.end(), std::greater<>());
+std::sort($1.begin(), $1.end(), std::greater<>());
 endsnippet
 
 snippet accumulate "" i
-std::accumulate(${1}.begin(), ${1}.end(), 0);
+std::accumulate($1.begin(), $1.end(), 0);
 endsnippet
 
 snippet sync "" i
@@ -701,39 +701,24 @@ int main()
 }
 endsnippet
 
-snippet header "" i
-#include <iostream>
-#include <utility>
-#include <string>
-#include <vector>
-#include <cmath>
-#include <unordered_map>
-#include <algorithm>
-#include <numeric>
-endsnippet
-
 snippet fori "" i
-for (int ${2:i} = 0; $2 < ${1:count}; $2${3:++}) {
+for (int ${2:i} = 0; $2 < ${1:count}; $2${3:++})
 	${4}
-}
 endsnippet
 
 snippet forir "" i
-for (int ${2:i} = ${1:count}; $2 >= 0; $2${3:--}) {
+for (int ${2:i} = ${1:count}; $2 >= 0; $2${3:--})
 	${4}
-}
 endsnippet
 
 snippet forj "" i
-for (int ${2:j} = 0; $2 < ${1:count}; $2${3:++}) {
+for (int ${2:j} = 0; $2 < ${1:count}; $2${3:++})
 	${4}
-}
 endsnippet
 
 snippet forjr "" i
-for (int ${2:j} = ${1:count}; $2 >= 0; $2${3:--}) {
+for (int ${2:j} = ${1:count}; $2 >= 0; $2${3:--})
 	${4}
-}
 endsnippet
 
 # static
@@ -778,7 +763,7 @@ std::vector<std::pair<$1, $2>> v(n)
 endsnippet
 
 snippet vv "" i
-std::vector<std::vector<$1>> v(n, std::vector<$1>($2));
+std::vector<std::vector<$1>> v(n, std::vector<$1>($2))
 endsnippet
 
 snippet ll "" i
@@ -798,15 +783,15 @@ size_t
 endsnippet
 
 snippet pb "" i
-push_back($1)
+push_back($1);
 endsnippet
 
 snippet eb "" i
-emplace_back($1)
+emplace_back($1);
 endsnippet
 
 snippet ppb "" i
-pop_back($1)
+pop_back($1);
 endsnippet
 
 snippet size "" i
