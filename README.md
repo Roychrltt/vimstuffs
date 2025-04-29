@@ -1,4 +1,4 @@
-# Things
+### Leave my snippets here in case one day I get suspected of cheating 
 
 To install Nord terminal theme on **Mac**: 
 
