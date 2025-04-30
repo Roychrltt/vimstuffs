@@ -7,11 +7,12 @@ priority -50
 # optional local name?
 snippet /^import/ "Import declaration" r
 import (
-	"${1:fmt}"
+	"${1:package}"
 )
 endsnippet
 
 snippet /^package/ "Package declaration" r
+// Package $1 provides ...
 package ${1:main}
 endsnippet
 
@@ -111,8 +112,4 @@ snippet err "Basic error handling" b
 if err != nil {
 	log.${1:Fatal}(err)
 }
-endsnippet
-
-snippet print
-fmt.Println($0)
 endsnippet

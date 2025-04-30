@@ -1027,4 +1027,18 @@ for (int i = n - 1; i >= 0; i--)
 		s.push_back(i);
 	}
 endsnippet
+
+snippet fastpow
+long long int fastPower(int x, int p)
+{
+	long long int res = 1;
+	while (p)
+	{
+		if (p & 1) res = (res * x) % MOD;
+		p >>= 1;
+		x = (x * x) % MOD;
+	}
+	return res;
+}
+endsnippet
 # vim:ft=snippets:
