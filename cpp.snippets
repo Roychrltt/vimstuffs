@@ -543,8 +543,11 @@ endsnippet
 
 snippet unionfind
 class DSU {
+	public:
+
 	std::vector<int> v1, v2;
 
+	// number of nodes, better do n + 1
 	DSU(int n)
 	{
 		v1.resize(n);
