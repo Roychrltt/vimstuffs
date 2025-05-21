@@ -477,31 +477,40 @@ return dp[amount];
 endsnippet
 
 snippet bfs
-int m = matrix.size(), n = matrix[0].size();
+int m = grid.size(), n = grid[0].size();
 std::vector<std::pair<int>> dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
-std::vector<std::vector<int>> visited(m, std::vector<int>(n));
-std::queue<std::pair<int, int>> q;
+std::vector<std::vector<int>> v(m, std::vector<int>(n, 1e9));
+std::priority_queue<std::pair<int, std::pair<int, int>>, std::vector<std::pair<int, std::pair<int, int>>>, std::greater<std::pair<int, std::pair<int, int>>>> q;
 
 for (int i = 0; i < m; ++i) {
 	for (int j = 0; j < n; ++j) {
-		if (matrix[i][j] == 0) {
-			q.emplace(i, j);
-			visited[i][j] = 1;
+		if (grid[i][j] == 0) {
+			std::pair<int, int> p = {i, j};
+			std::pair<int, std::pair<int, int>> pp = {0, p};
+			q.push(pp);
+			v[i][j] = 0;
 		}
 	}
 }
 
 while (!q.empty()) {
-	auto [i, j] = q.front();
-	q.pop();
+	int vv = q.front().first;
+	int i = q.front().second.first;
+	int j = q.front().second.second;
+	if (i == xx && j == yy)
+	{
+		std::cout << vv << std::endl;
+		return;
+	}
 	for (auto [dx, dy] : dirs)
 	{
 		int ni = i + dx;
 		int nj = j + dy;
-		if (ni >= 0 && ni < m && nj >= 0 && nj < n && !visited[ni][nj]) {
-			ans[ni][nj] = ans[i][j] + 1;
-			q.emplace(ni, nj);
-			visited[ni][nj] = 1;
+		if (ni >= 0 && ni < m && nj >= 0 && nj < n && v[ni][nj] > vv + 1) {
+			v[ni][nj] = grid[ni][nj] == '#' ? vv + 1 : vv;
+			p = {ni, nj};
+			pp = {v[ni][nj], p};
+			q.emplace(pp);
 		}
 	}
 }
