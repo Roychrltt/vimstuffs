@@ -477,37 +477,33 @@ return dp[amount];
 endsnippet
 
 snippet bfs
-std::vector<std::vector<int>> updateMatrix(std::vector<std::vector<int>>& matrix) {
-	int m = matrix.size(), n = matrix[0].size();
-	std::vector<std::vector<int>> ans(m, std::vector<int>(n));
-	std::vector<std::vector<int>> visited(m, std::vector<int>(n));
-	std::queue<std::pair<int, int>> q;
+int m = matrix.size(), n = matrix[0].size();
+std::vector<std::pair<int>> dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+std::vector<std::vector<int>> visited(m, std::vector<int>(n));
+std::queue<std::pair<int, int>> q;
 
-	for (int i = 0; i < m; ++i) {
-		for (int j = 0; j < n; ++j) {
-			if (matrix[i][j] == 0) {
-				q.emplace(i, j);
-				visited[i][j] = 1;
-			}
+for (int i = 0; i < m; ++i) {
+	for (int j = 0; j < n; ++j) {
+		if (matrix[i][j] == 0) {
+			q.emplace(i, j);
+			visited[i][j] = 1;
 		}
 	}
+}
 
-	while (!q.empty()) {
-		auto [i, j] = q.front();
-		q.pop();
-		for (auto [dx, dy] : dirs)
-		{
-			int ni = i + dx;
-			int nj = j + dy;
-			if (ni >= 0 && ni < m && nj >= 0 && nj < n && !visited[ni][nj]) {
-				ans[ni][nj] = ans[i][j] + 1;
-				q.emplace(ni, nj);
-				visited[ni][nj] = 1;
-			}
+while (!q.empty()) {
+	auto [i, j] = q.front();
+	q.pop();
+	for (auto [dx, dy] : dirs)
+	{
+		int ni = i + dx;
+		int nj = j + dy;
+		if (ni >= 0 && ni < m && nj >= 0 && nj < n && !visited[ni][nj]) {
+			ans[ni][nj] = ans[i][j] + 1;
+			q.emplace(ni, nj);
+			visited[ni][nj] = 1;
 		}
 	}
-
-	return ans;
 }
 endsnippet
 
@@ -546,47 +542,47 @@ snippet unionfind
 class DSU {
 	public:
 
-	std::vector<int> v1, v2;
+		std::vector<int> v1, v2;
 
-	// number of nodes, better do n + 1
-	DSU(int n)
-	{
-		v1.resize(n);
-		v2.resize(n, 0);
-		for (int i = 0; i < n; ++i)
-			v1[i] = i;
-	}
-
-	int find(int i)
-	{
-		if (v1[i] != i)
-			v1[i] = find(v1[i]);
-		return v1[i];
-	}
-
-
-	void unite(int i, int k)
-	{
-		int a = find(i);
-		int b = find(k);
-		if (a != b)
+		// number of nodes, better do n + 1
+		DSU(int n)
 		{
-			if (v2[a] > v2[b])
-				v1[b] = a;
-			else if (v2[a] < v2[b])
-				v1[a] = b;
-			else
+			v1.resize(n);
+			v2.resize(n, 0);
+			for (int i = 0; i < n; ++i)
+				v1[i] = i;
+		}
+
+		int find(int i)
+		{
+			if (v1[i] != i)
+				v1[i] = find(v1[i]);
+			return v1[i];
+		}
+
+
+		void unite(int i, int k)
+		{
+			int a = find(i);
+			int b = find(k);
+			if (a != b)
 			{
-				v1[b] = a;
-				v2[a]++;
+				if (v2[a] > v2[b])
+					v1[b] = a;
+				else if (v2[a] < v2[b])
+					v1[a] = b;
+				else
+				{
+					v1[b] = a;
+					v2[a]++;
+				}
 			}
 		}
-	}
 
-	bool is_same_set(int a, int b)
-	{
-		return find(a) == find(b);
-	}
+		bool is_same_set(int a, int b)
+		{
+			return find(a) == find(b);
+		}
 };
 endsnippet
 
@@ -647,7 +643,7 @@ int main()
 	std::cin.tie(0);
 	std::cout.tie(0);
 	$0
-	__Made in France__
+		__Made in France__
 }
 endsnippet
 
@@ -707,22 +703,22 @@ endsnippet
 
 snippet fori "" i
 for (int ${2:i} = 0; $2 < ${1:count}; $2${3:++})
-	${4}
+${4}
 endsnippet
 
 snippet forir "" i
 for (int ${2:i} = ${1:count}; $2 >= 0; $2${3:--})
-	${4}
+${4}
 endsnippet
 
 snippet forj "" i
 for (int ${2:j} = 0; $2 < ${1:count}; $2${3:++})
-	${4}
+${4}
 endsnippet
 
 snippet forjr "" i
 for (int ${2:j} = ${1:count}; $2 >= 0; $2${3:--})
-	${4}
+${4}
 endsnippet
 
 snippet s
@@ -750,140 +746,140 @@ snippet pii "" i
 std::pair<int, int>
 endsnippet
 
-snippet vs "" i
+	snippet vs "" i
 std::vector<std::string> v(n)
-endsnippet
+	endsnippet
 
-snippet vl "" i
+	snippet vl "" i
 std::vector<long long int> v(n)
-endsnippet
+	endsnippet
 
-snippet vd "" i
+	snippet vd "" i
 std::vector<double> v(n)
-endsnippet
+	endsnippet
 
-snippet vc "" i
+	snippet vc "" i
 std::vector<char> v(n)
-endsnippet
+	endsnippet
 
-snippet vp "" i
+	snippet vp "" i
 std::vector<std::pair<$1, $2>> v(n)
-endsnippet
+	endsnippet
 
-snippet vv "" i
+	snippet vv "" i
 std::vector<std::vector<$1>> v(n, std::vector<$1>($2))
-endsnippet
+	endsnippet
 
-snippet ll "" i
-long long int
-endsnippet
+	snippet ll "" i
+	long long int
+	endsnippet
 
-snippet ull "" i
-unsigned long long int
-endsnippet
+	snippet ull "" i
+	unsigned long long int
+	endsnippet
 
-snippet ui "" i
-unsigned int
-endsnippet
+	snippet ui "" i
+	unsigned int
+	endsnippet
 
-snippet zu "" i
-size_t
-endsnippet
+	snippet zu "" i
+	size_t
+	endsnippet
 
-snippet pb "" i
-push_back($1);
-endsnippet
+	snippet pb "" i
+	push_back($1);
+	endsnippet
 
-snippet eb "" i
-emplace_back($1);
-endsnippet
+	snippet eb "" i
+	emplace_back($1);
+	endsnippet
 
-snippet ppb "" i
-pop_back($1);
-endsnippet
+	snippet ppb "" i
+	pop_back($1);
+	endsnippet
 
-snippet size "" i
-int n = $1.size();
-endsnippet
+	snippet size "" i
+	int n = $1.size();
+	endsnippet
 
-snippet len "" i
-int n = $1.length();
-endsnippet
+	snippet len "" i
+	int n = $1.length();
+	endsnippet
 
-snippet lbd "" i
-std::lower_bound($1.begin(), $1.end(), $2);
-endsnippet
+	snippet lbd "" i
+	std::lower_bound($1.begin(), $1.end(), $2);
+	endsnippet
 
-snippet ubd "" i
-std::upper_bound($1.begin(), $1.end(), $2);
-endsnippet
+	snippet ubd "" i
+	std::upper_bound($1.begin(), $1.end(), $2);
+	endsnippet
 
-snippet end
+	snippet end
 {
 	std::cout << $0 << std::endl;
 	return;
 }
 endsnippet
 
-snippet btp "" i
+	snippet btp "" i
 __builtin_popcount($1)
-endsnippet
+	endsnippet
 
-snippet ctz "" i
+	snippet ctz "" i
 __builtin_ctz($1)
-endsnippet
+	endsnippet
 
-snippet clz "" i
+	snippet clz "" i
 __builtin_clz($1)
-endsnippet
+	endsnippet
 
-snippet parity "" i
+	snippet parity "" i
 __builtin_parity($1)
-endsnippet
+	endsnippet
 
-snippet npos ""
-std::string::npos
-endsnippet
+	snippet npos ""
+	std::string::npos
+	endsnippet
 
-snippet max "" i
-std::max($1, $2);
-endsnippet
+	snippet max "" i
+	std::max($1, $2);
+	endsnippet
 
-snippet min "" i
-std::min($1, $2);
-endsnippet
+	snippet min "" i
+	std::min($1, $2);
+	endsnippet
 
-snippet minel "" i
-*min_element(${1:v}.begin(), ${1}.end());
-endsnippet
+	snippet minel "" i
+	*min_element(${1:v}.begin(), ${1}.end());
+	endsnippet
 
-snippet maxel "" i
-*max_element(${1:v}.begin(), ${1}.end());
-endsnippet
+	snippet maxel "" i
+	*max_element(${1:v}.begin(), ${1}.end());
+	endsnippet
 
-snippet getline "" i
+	snippet getline "" i
 std::getline(std::cin, ${1: name})
-endsnippet
+	endsnippet
 
-snippet kmp
-std::vector<int> computeLPS(const std::string& pattern) {
-	int n = pattern.size();
-	std::vector<int> lps(n, 0);
-	int len = 0;
-	int i = 1;
+	snippet kmp
+	std::vector<int> computeLPS(const std::string& pattern) {
+		int n = pattern.size();
+		std::vector<int> lps(n, 0);
+		int len = 0;
+		int i = 1;
 
-	while (i < n)
-	{
-		if (pattern[i] == pattern[len])
-			lps[i++] = ++len;
-		else
+		while (i < n)
 		{
-			if (len > 0) len = lps[len - 1];
-			else i++;
+			if (pattern[i] == pattern[len])
+				lps[i++] = ++len;
+			else
+			{
+				if (len > 0) len = lps[len - 1];
+				else i++;
+			}
 		}
+		return lps;
 	}
-	return lps;
-}
 
 std::vector<int> kmp(const std::string& pattern, const std::string& text)
 {
@@ -928,7 +924,7 @@ snippet opti
 #pragma GCC target("avx,avx2,fma")
 endsnippet
 
-snippet prime
+	snippet prime
 std::vector<int> findPrime(int n)
 {
 	std::vector<bool> isPrime(n + 1, true);
@@ -964,7 +960,7 @@ snippet precision
 std::cout << std::fixed << std::setprecision($0) << $1 << std::endl;
 endsnippet
 
-snippet quicksort
+	snippet quicksort
 void	quicksort(std::vector<int>& v, int l, int r)
 {
 	if (l >= r) return;
@@ -1031,18 +1027,18 @@ endsnippet
 
 snippet monostack
 for (int i = n - 1; i >= 0; i--)
+{
+	while (!s.empty() && heights[s.back()] > heights[i])
 	{
-		while (!s.empty() && heights[s.back()] > heights[i])
-		{
-			int idx = s.back();
-			s.pop_back();
-			left[idx] = idx - i - 1;
-		}
-		s.push_back(i);
+		int idx = s.back();
+		s.pop_back();
+		left[idx] = idx - i - 1;
 	}
+	s.push_back(i);
+}
 endsnippet
 
-snippet fastpow
+	snippet fastpow
 long long int fastPower(int x, int p)
 {
 	long long int res = 1;
@@ -1056,7 +1052,7 @@ long long int fastPower(int x, int p)
 }
 endsnippet
 
-snippet fact
+	snippet fact
 long long int factorial(int x)
 {
 	long long int res = 1;
@@ -1068,65 +1064,65 @@ endsnippet
 
 snippet suffix
 class SuffixArray {
-		int n;
-		std::vector<int> SA, tempSA, RA, tempRA, cnt;
-		std::string T;
+	int n;
+	std::vector<int> SA, tempSA, RA, tempRA, cnt;
+	std::string T;
 
-		int getRA(int i) const {
-			return (i < n) ? RA[i] : 0;
+	int getRA(int i) const {
+		return (i < n) ? RA[i] : 0;
+	}
+
+	void radix_sort(int k) {
+		int max_val = std::max(300, n);
+		cnt.assign(max_val, 0);
+
+		for (int i = 0; i < n; ++i)
+			cnt[getRA(i + k)]++;
+
+		for (int i = 1; i < max_val; ++i)
+			cnt[i] += cnt[i - 1];
+
+		for (int i = n - 1; i >= 0; --i) {
+			int idx = getRA(SA[i] + k);
+			tempSA[--cnt[idx]] = SA[i];
 		}
-
-		void radix_sort(int k) {
-			int max_val = std::max(300, n);
-			cnt.assign(max_val, 0);
-
-			for (int i = 0; i < n; ++i)
-				cnt[getRA(i + k)]++;
-
-			for (int i = 1; i < max_val; ++i)
-				cnt[i] += cnt[i - 1];
-
-			for (int i = n - 1; i >= 0; --i) {
-				int idx = getRA(SA[i] + k);
-				tempSA[--cnt[idx]] = SA[i];
-			}
-			SA = tempSA;
-		}
+		SA = tempSA;
+	}
 
 	public:
-		std::vector<int> build(const std::string& input) {
-			T = input + "$";
-			n = T.size();
+	std::vector<int> build(const std::string& input) {
+		T = input + "$";
+		n = T.size();
 
-			SA.resize(n);
-			tempSA.resize(n);
-			RA.resize(n);
-			tempRA.resize(n);
+		SA.resize(n);
+		tempSA.resize(n);
+		RA.resize(n);
+		tempRA.resize(n);
 
-			for (int i = 0; i < n; ++i) {
-				SA[i] = i;
-				RA[i] = T[i];
-			}
-
-			for (int k = 1; k < n; k <<= 1) {
-				radix_sort(k);
-				radix_sort(0);
-
-				tempRA[SA[0]] = 0;
-				int r = 0;
-
-				for (int i = 1; i < n; ++i) {
-					if (RA[SA[i]] != RA[SA[i - 1]] || getRA(SA[i] + k) != getRA(SA[i - 1] + k))
-						r++;
-					tempRA[SA[i]] = r;
-				}
-				RA = tempRA;
-
-				if (RA[SA[n - 1]] == n - 1)
-					break;
-			}
-			return SA;
+		for (int i = 0; i < n; ++i) {
+			SA[i] = i;
+			RA[i] = T[i];
 		}
+
+		for (int k = 1; k < n; k <<= 1) {
+			radix_sort(k);
+			radix_sort(0);
+
+			tempRA[SA[0]] = 0;
+			int r = 0;
+
+			for (int i = 1; i < n; ++i) {
+				if (RA[SA[i]] != RA[SA[i - 1]] || getRA(SA[i] + k) != getRA(SA[i - 1] + k))
+					r++;
+				tempRA[SA[i]] = r;
+			}
+			RA = tempRA;
+
+			if (RA[SA[n - 1]] == n - 1)
+				break;
+		}
+		return SA;
+	}
 };
 
 std::vector<int> buildSA(const std::string& s) {
