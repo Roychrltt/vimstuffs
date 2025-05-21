@@ -478,7 +478,7 @@ endsnippet
 
 snippet bfs
 int m = grid.size(), n = grid[0].size();
-std::vector<std::pair<int>> dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+std::vector<std::pair<int, int>> dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 std::vector<std::vector<int>> v(m, std::vector<int>(n, 1e9));
 std::priority_queue<std::pair<int, std::pair<int, int>>, std::vector<std::pair<int, std::pair<int, int>>>, std::greater<std::pair<int, std::pair<int, int>>>> q;
 
@@ -494,9 +494,10 @@ for (int i = 0; i < m; ++i) {
 }
 
 while (!q.empty()) {
-	int vv = q.front().first;
-	int i = q.front().second.first;
-	int j = q.front().second.second;
+	int vv = q.top().first;
+	int i = q.top().second.first;
+	int j = q.top().second.second;
+	q.pop();
 	if (i == xx && j == yy)
 	{
 		std::cout << vv << std::endl;
@@ -755,140 +756,140 @@ snippet pii "" i
 std::pair<int, int>
 endsnippet
 
-	snippet vs "" i
+snippet vs "" i
 std::vector<std::string> v(n)
-	endsnippet
+endsnippet
 
-	snippet vl "" i
+snippet vl "" i
 std::vector<long long int> v(n)
-	endsnippet
+endsnippet
 
-	snippet vd "" i
+snippet vd "" i
 std::vector<double> v(n)
-	endsnippet
+endsnippet
 
-	snippet vc "" i
+snippet vc "" i
 std::vector<char> v(n)
-	endsnippet
+endsnippet
 
-	snippet vp "" i
+snippet vp "" i
 std::vector<std::pair<$1, $2>> v(n)
-	endsnippet
+endsnippet
 
-	snippet vv "" i
+snippet vv "" i
 std::vector<std::vector<$1>> v(n, std::vector<$1>($2))
-	endsnippet
+endsnippet
 
-	snippet ll "" i
-	long long int
-	endsnippet
+snippet ll "" i
+long long int
+endsnippet
 
-	snippet ull "" i
-	unsigned long long int
-	endsnippet
+snippet ull "" i
+unsigned long long int
+endsnippet
 
-	snippet ui "" i
-	unsigned int
-	endsnippet
+snippet ui "" i
+unsigned int
+endsnippet
 
-	snippet zu "" i
-	size_t
-	endsnippet
+snippet zu "" i
+size_t
+endsnippet
 
-	snippet pb "" i
-	push_back($1);
-	endsnippet
+snippet pb "" i
+push_back($1);
+endsnippet
 
-	snippet eb "" i
-	emplace_back($1);
-	endsnippet
+snippet eb "" i
+emplace_back($1);
+endsnippet
 
-	snippet ppb "" i
-	pop_back($1);
-	endsnippet
+snippet ppb "" i
+pop_back($1);
+endsnippet
 
-	snippet size "" i
-	int n = $1.size();
-	endsnippet
+snippet size "" i
+int n = $1.size();
+endsnippet
 
-	snippet len "" i
-	int n = $1.length();
-	endsnippet
+snippet len "" i
+int n = $1.length();
+endsnippet
 
-	snippet lbd "" i
-	std::lower_bound($1.begin(), $1.end(), $2);
-	endsnippet
+snippet lbd "" i
+std::lower_bound($1.begin(), $1.end(), $2);
+endsnippet
 
-	snippet ubd "" i
-	std::upper_bound($1.begin(), $1.end(), $2);
-	endsnippet
+snippet ubd "" i
+std::upper_bound($1.begin(), $1.end(), $2);
+endsnippet
 
-	snippet end
+snippet end
 {
-	std::cout << $0 << std::endl;
-	return;
+std::cout << $0 << std::endl;
+return;
 }
 endsnippet
 
-	snippet btp "" i
+snippet btp "" i
 __builtin_popcount($1)
-	endsnippet
+endsnippet
 
-	snippet ctz "" i
+snippet ctz "" i
 __builtin_ctz($1)
-	endsnippet
+endsnippet
 
-	snippet clz "" i
+snippet clz "" i
 __builtin_clz($1)
-	endsnippet
+endsnippet
 
-	snippet parity "" i
+snippet parity "" i
 __builtin_parity($1)
-	endsnippet
+endsnippet
 
-	snippet npos ""
-	std::string::npos
-	endsnippet
+snippet npos ""
+std::string::npos
+endsnippet
 
-	snippet max "" i
-	std::max($1, $2);
-	endsnippet
+snippet max "" i
+std::max($1, $2);
+endsnippet
 
-	snippet min "" i
-	std::min($1, $2);
-	endsnippet
+snippet min "" i
+std::min($1, $2);
+endsnippet
 
-	snippet minel "" i
-	*min_element(${1:v}.begin(), ${1}.end());
-	endsnippet
+snippet minel "" i
+*min_element(${1:v}.begin(), ${1}.end());
+endsnippet
 
-	snippet maxel "" i
-	*max_element(${1:v}.begin(), ${1}.end());
-	endsnippet
+snippet maxel "" i
+*max_element(${1:v}.begin(), ${1}.end());
+endsnippet
 
-	snippet getline "" i
+snippet getline "" i
 std::getline(std::cin, ${1: name})
-	endsnippet
+endsnippet
 
-	snippet kmp
-	std::vector<int> computeLPS(const std::string& pattern) {
-		int n = pattern.size();
-		std::vector<int> lps(n, 0);
-		int len = 0;
-		int i = 1;
+snippet kmp
+std::vector<int> computeLPS(const std::string& pattern) {
+	int n = pattern.size();
+	std::vector<int> lps(n, 0);
+	int len = 0;
+	int i = 1;
 
-		while (i < n)
+	while (i < n)
+	{
+		if (pattern[i] == pattern[len])
+			lps[i++] = ++len;
+		else
 		{
-			if (pattern[i] == pattern[len])
-				lps[i++] = ++len;
-			else
-			{
-				if (len > 0) len = lps[len - 1];
-				else i++;
-			}
+			if (len > 0) len = lps[len - 1];
+			else i++;
 		}
-		return lps;
 	}
+	return lps;
+}
 
 std::vector<int> kmp(const std::string& pattern, const std::string& text)
 {
@@ -933,7 +934,7 @@ snippet opti
 #pragma GCC target("avx,avx2,fma")
 endsnippet
 
-	snippet prime
+snippet prime
 std::vector<int> findPrime(int n)
 {
 	std::vector<bool> isPrime(n + 1, true);
@@ -969,7 +970,7 @@ snippet precision
 std::cout << std::fixed << std::setprecision($0) << $1 << std::endl;
 endsnippet
 
-	snippet quicksort
+snippet quicksort
 void	quicksort(std::vector<int>& v, int l, int r)
 {
 	if (l >= r) return;
@@ -1047,7 +1048,7 @@ for (int i = n - 1; i >= 0; i--)
 }
 endsnippet
 
-	snippet fastpow
+snippet fastpow
 long long int fastPower(int x, int p)
 {
 	long long int res = 1;
@@ -1061,7 +1062,7 @@ long long int fastPower(int x, int p)
 }
 endsnippet
 
-	snippet fact
+snippet fact
 long long int factorial(int x)
 {
 	long long int res = 1;
