@@ -1,5 +1,11 @@
 #!/bin/bash
 
+cp ~/.vim/bundle/vim-snippets/UltiSnips/cpp.snippets ~/vimstuffs/.
+cp ~/.vim/bundle/vim-snippets/UltiSnips/c.snippets ~/vimstuffs/.
+cp ~/.vim/bundle/vim-snippets/UltiSnips/go.snippets ~/vimstuffs/.
+cp ~/.zshrc ~/vimstuffs/zshrc
+cp ~/.vimrc ~/vimstuffs/vimrc
+
 RED=$'\e[1;31m'
 GREEN=$'\e[1;32m'
 CYAN=$'\e[1;36m'
