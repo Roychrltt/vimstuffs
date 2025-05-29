@@ -776,7 +776,7 @@ snippet vp "" i
 std::vector<std::pair<$1, $2>> v(n)
 endsnippet
 
-snippet vv "" i
+snippet v2 "" i
 std::vector<std::vector<$1>> v(n, std::vector<$1>($2))
 endsnippet
 
@@ -1209,6 +1209,17 @@ vector<int> assignEdgeWeights(vector<vector<int>>& edges, vector<vector<int>>& q
 	}
 
 	return ans;
+}
+endsnippet
+
+snippet buildtree
+int n = edges.size();
+std::vector<std::vector<int>> next(n + 1);
+for (const auto& e : edges)
+{
+	int x = e[0], y = e[1];
+	next[x].push_back(y);
+	next[y].push_back(x);
 }
 endsnippet
 
