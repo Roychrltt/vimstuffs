@@ -155,6 +155,23 @@ snippet um "" i
 std::unordered_map<$1, $2> map;
 endsnippet
 
+snippet customhash
+struct CustomHash {
+	static uint64_t splitmix64(uint64_t x) {
+		x += 0x9e3779b97f4a7c15;
+		x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9;
+		x = (x ^ (x >> 27)) * 0x94d049bb133111eb;
+		return x ^ (x >> 31);
+	}
+
+	size_t operator()(uint64_t x) const {
+		static const uint64_t FIXED_RANDOM = chrono::steady_clock::now().time_since_epoch().count();
+		return splitmix64(x + FIXED_RANDOM);
+	}
+};
+std::unordered_map<int, int, CustomHash> map;
+endsnippet
+
 snippet ss "" i
 std::stringstream ${1:string}
 endsnippet
@@ -997,6 +1014,28 @@ void	quicksort(std::vector<int>& v, int l, int r)
 	v[l] = k;
 	quicksort(v, ll, l - 1);
 	quicksort(v, r + 1, rr);
+}
+endsnippet
+
+snippet quickselect
+int partition(std::vector<int>& v, int l, int r)
+{
+	int pivot = v[r], i = l;
+	for (int j = l, j < r; j++)
+		if (v[j] <= pivot) std::swap(v[j], v[i++]);
+
+	std::swap(v[i], v[r]);
+	return i;
+}
+
+int kthSmallest(std::vector<int>& v, int l, int r, int k)
+{
+	if (k <= 0 || k > r - l + 1) return -1;
+
+	int idx = partition(v, l, r);
+	if (idx - l == k - 1) return v[idx];
+	else if (idx - 1 > k - 1) return kthSmallest(v, l, idx - 1, k);
+	else return kthSmallest(v, idx + 1, r, k - idx + l - 1);
 }
 endsnippet
 
