@@ -1123,6 +1123,31 @@ long long int factorial(int x)
 }
 endsnippet
 
+snippet comb
+const int MOD = 1e9 + 7;
+const int MX = 1e5;
+
+long long int F[MX];
+long long int IF[MX];
+
+void init()
+{
+	if (F[0]) return;
+	F[0] = 1;
+	for (int i = 1; i < MX; i++)
+		F[i] = F[i - 1] * i % MOD;
+
+	IF[MX - 1] = fastPower(F[MX - 1], MOD - 2);
+	for (int i = MX - 1; i; i--)
+		IF[i - 1] = IF[i] * i % MOD;
+}
+
+long long int comb(long long int n, long long int m)
+{
+	return F[n] * IF[m] % MOD * IF[n - m] % MOD;
+}
+endsnippet
+
 snippet suffix
 class SuffixArray {
 	int n;
@@ -1189,32 +1214,6 @@ class SuffixArray {
 std::vector<int> buildSA(const std::string& s) {
 	SuffixArray sa;
 	return sa.build(s);
-}
-endsnippet
-
-snippet lcp
-// Suppose we've already built the suffix array sa(n + 1);
-std::vector<int> build_lcp(const std::vector<int> &sa)
-{
-	int n = sa.size();
-	std::vector<int> rank(n), lcp(n);
-
-	for (int i = 0; i < n; ++i) rank[sa[i]] = i;
-
-	int h = 0;
-	for (int i = 0; i < n; ++i) {
-		if (rank[i] == 0) lcp[0] = 0;
-		else
-		{
-			int j = sa[rank[i] - 1];
-			while (i + h < n && j + h < n && s[i + h] == s[j + h])
-				h++;
-			lcp[rank[i]] = h;
-			if (h > 0) h--;
-		}
-	}
-
-	return lcp;  // lcp[i] is the LCP of suffixes starting from sa[i] and sa[i - 1]
 }
 endsnippet
 
