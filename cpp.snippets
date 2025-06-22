@@ -954,7 +954,7 @@ endsnippet
 snippet prime
 std::vector<int> findPrime(int n)
 {
-	std::vector<bool> isPrime(n + 1, true);
+	std::vector<bool> is_prime(n + 1, true);
 	std::vector<int> primes;
 	is_prime[0] = is_prime[1] = false;
 	for (int i = 2; i * i <= n; i++) {
