@@ -33,7 +33,7 @@ alias vgv="valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --su
 alias vghg="valgrind --tool=helgrind"
 alias drd="valgrind --tool=helgrind --tool=drd"
 alias gitfalse="git config pull.rebase false"
-alias delsig="rm -rf ~/.config/google-chrome/Singleton*"
+alias delsig="rm -rf ~/.config/google-chrome"
 alias c="clear"
 alias myrun="./a.out < input > myoutput"
 alias mydiff="diff myoutput output"
