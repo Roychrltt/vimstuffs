@@ -535,11 +535,8 @@ while (!q.empty()) {
 endsnippet
 
 snippet dijkstra
-using std::pair<int, int> pii
-
-// adj is an already_built graph
 void dijkstra(int start, int dst, const std::vector<std::vector<pii>>& adj) {
-	std::vector<int> dist(dst + 1, INF); 
+	std::vector<int> dist(dst + 1, INT_MAX); 
 	std::priority_queue<pii, std::vector<pii>, std::greater<pii>> pq;
 
 	dist[start] = 0;
