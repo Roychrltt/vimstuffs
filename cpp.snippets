@@ -563,50 +563,34 @@ void dijkstra(int start, int dst, const std::vector<std::vector<pii>>& adj) {
 endsnippet
 
 snippet unionfind
-class DSU {
-	public:
+std::vector<int> f(n), rank(n);
 
-		std::vector<int> v1, v2;
+for (int i = 0; i < n; ++i)
+	f[i] = i;
 
-		// number of nodes, better do n + 1
-		DSU(int n)
+auto find = [&](this auto&& find, int i)
+{
+	if (f[i] != i)
+		f[i] = find(f[i]);
+	return f[i];
+};
+
+auto unit = [](int i, int j)
+{
+	i = find(i);
+	j = find(j);
+	if (i != j)
+	{
+		if (rank[i] > rank[j])
+			f[j] = i;
+		else if (rank[i] < rank[j])
+			f[i] = j;
+		else
 		{
-			v1.resize(n);
-			v2.resize(n, 0);
-			for (int i = 0; i < n; ++i)
-				v1[i] = i;
+			f[j] = i;
+			rank[i]++;
 		}
-
-		int find(int i)
-		{
-			if (v1[i] != i)
-				v1[i] = find(v1[i]);
-			return v1[i];
-		}
-
-
-		void unite(int i, int k)
-		{
-			int a = find(i);
-			int b = find(k);
-			if (a != b)
-			{
-				if (v2[a] > v2[b])
-					v1[b] = a;
-				else if (v2[a] < v2[b])
-					v1[a] = b;
-				else
-				{
-					v1[b] = a;
-					v2[a]++;
-				}
-			}
-		}
-
-		bool is_same_set(int a, int b)
-		{
-			return find(a) == find(b);
-		}
+	}
 };
 endsnippet
 
