@@ -663,6 +663,12 @@ snippet sortr "" i
 std::sort($1.begin(), $1.end(), std::greater<>());
 endsnippet
 
+snippet sortl "" i
+std::sort($1.begin(), $1.end(), [&](const auto& a, const auto& b{
+	return a[0] < b[0];
+}));
+endsnippet
+
 snippet accumulate "" i
 std::accumulate($1.begin(), $1.end(), 0);
 endsnippet
