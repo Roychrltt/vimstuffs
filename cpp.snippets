@@ -563,34 +563,50 @@ void dijkstra(int start, int dst, const std::vector<std::vector<pii>>& adj) {
 endsnippet
 
 snippet unionfind
-std::vector<int> f(n), rank(n);
+class DSU {
+	public:
 
-for (int i = 0; i < n; ++i)
-	f[i] = i;
+		std::vector<int> v1, v2;
 
-auto find = [&](this auto&& find, int i)
-{
-	if (f[i] != i)
-		f[i] = find(f[i]);
-	return f[i];
-};
-
-auto unit = [](int i, int j)
-{
-	i = find(i);
-	j = find(j);
-	if (i != j)
-	{
-		if (rank[i] > rank[j])
-			f[j] = i;
-		else if (rank[i] < rank[j])
-			f[i] = j;
-		else
+		// number of nodes, better do n + 1
+		DSU(int n)
 		{
-			f[j] = i;
-			rank[i]++;
+			v1.resize(n);
+			v2.resize(n, 0);
+			for (int i = 0; i < n; ++i)
+				v1[i] = i;
 		}
-	}
+
+		int find(int i)
+		{
+			if (v1[i] != i)
+				v1[i] = find(v1[i]);
+			return v1[i];
+		}
+
+
+		void unite(int i, int k)
+		{
+			int a = find(i);
+			int b = find(k);
+			if (a != b)
+			{
+				if (v2[a] > v2[b])
+					v1[b] = a;
+				else if (v2[a] < v2[b])
+					v1[a] = b;
+				else
+				{
+					v1[b] = a;
+					v2[a]++;
+				}
+			}
+		}
+
+		bool is_same_set(int a, int b)
+		{
+			return find(a) == find(b);
+		}
 };
 endsnippet
 
@@ -1133,7 +1149,6 @@ snippet suffix
 class SuffixArray {
 	int n;
 	std::vector<int> SA, tempSA, RA, tempRA, cnt;
-	std::string T;
 
 	int getRA(int i) const {
 		return (i < n) ? RA[i] : 0;
@@ -1157,9 +1172,8 @@ class SuffixArray {
 	}
 
 	public:
-	std::vector<int> build(const std::string& input) {
-		T = input + "$";
-		n = T.size();
+	std::vector<int> build(const std::string& s) {
+		n = s.size();
 
 		SA.resize(n);
 		tempSA.resize(n);
@@ -1168,7 +1182,7 @@ class SuffixArray {
 
 		for (int i = 0; i < n; ++i) {
 			SA[i] = i;
-			RA[i] = T[i];
+			RA[i] = s[i];
 		}
 
 		for (int k = 1; k < n; k <<= 1) {
@@ -1192,9 +1206,33 @@ class SuffixArray {
 	}
 };
 
+// ------------------ This string s is supposed to be appended with a '$' -------------------
 std::vector<int> buildSA(const std::string& s) {
 	SuffixArray sa;
 	return sa.build(s);
+}
+endsnippet
+
+snippet lcp
+// ------------------ This string s is supposed to be appended with a '$' -------------------
+std::vector<int> buildLCP(const std::string &s, const std::vector<int> &sa)
+{
+	int n = s.size();
+	std::vector<int> rank(n), lcp(n - 1);
+	for (int i = 0; i < n; ++i)
+		rank[sa[i]] = i;
+
+	int h = 0;
+	for (int i = 0; i < n; ++i)
+	{
+		if (rank[i] == 0) continue;
+		int j = sa[rank[i] - 1];
+		while (i + h < n && j + h < n && s[i + h] == s[j + h])
+			++h;
+		if (rank[i] >= 1) lcp[rank[i] - 1] = h;
+		if (h > 0) --h;
+	}
+	return lcp;
 }
 endsnippet
 
@@ -1270,9 +1308,5 @@ endsnippet
 
 snippet re
 return 
-endsnippet
-
-snippet nth
-std::nth_element($1.begin(), $1.begin() + $2, $1.end());
 endsnippet
 # vim:ft=snippets:
