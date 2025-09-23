@@ -1325,30 +1325,38 @@ int log2_floor(unsigned long i)
 }
 
 //------------------------- The queries are 0-indexed -----------------------------
-int main()
+class SparseTable
 {
-	std::ios::sync_with_stdio(false);
-	std::cin.tie(0);
-	std::cout.tie(0);
-	int n, q;
-	std::cin >> n >> q;
-	std::vector<int> v(n);
-	for (int i = 0; i < n; i++) std::cin >> v[i];
-	int k = log2_floor(n);
-	int st[k + 1][n];
-	std::copy(v.begin(), v.end(), st[0]);
-	for (int i = 1; i <= k; i++)
-		for (int j = 0; j + (1 << i) <= n; j++)
-			st[i][j] = std::min(st[i - 1][j], st[i - 1][j + (1 << (i - 1))]);
-	while (q--)
-	{
-		int l, r;
-		std::cin >> l >> r;
-		int i = log2_floor(r - l + 1);
-		std::cout << std::min(st[i][l], st[i][r - (1 << i) + 1]) << std::endl;
+	std::vector<std::vector<long long int>> st;
+	std::vector<long long int> log;
+	int n;
+
+	public:
+
+	SparseTable(const std::vector<long long int>& v) {
+		n = v.size();
+		int K = std::bit_width((unsigned int)n);
+
+		st.assign(K, std::vector<long long int>(n));
+		log.assign(n + 1, 0);
+
+		for (int i = 2; i <= n; i++)
+			log[i] = log[i / 2] + 1;
+
+		for (int i = 0; i < n; i++)
+			st[0][i] = v[i];
+
+		for (int k = 1; k < K; k++)
+			for (int i = 0; i + (1 << k) <= n; i++)
+				st[k][i] = std::min(st[k - 1][i], st[k - 1][i + (1 << (k - 1))]);
 	}
-	__Made in France__
-}
+
+	long long query(int l, int r) {
+		r = std::min(r, n - 1);
+		int j = log[r - l + 1];
+		return std::min(st[j][l], st[j][r - (1 << j) + 1]);
+	}
+};
 endsnippet
 
 snippet lchack

@@ -1,6 +1,8 @@
 # If you come from bash you might have to change your $PATH.
 
-export PATH="/opt/homebrew/opt/python@3.13/Frameworks/Python.framework/Versions/3.13/bin:$PATH"
+export PATH="/opt/homebrew/opt/python@3.13/Frameworks/Python.framework/Versions/3.13/bin:$PATH:/home/xiaxu/.local/bin"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -8,6 +10,7 @@ USER=xiaxu
 export USER
 MAIL=xiaxu@student.42.fr
 export MAIL
+alias norminette="flake8"
 #export PATH="~/francinette/bin/"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -33,7 +36,7 @@ alias vgv="valgrind --leak-check=full --show-leak-kinds=all --track-fds=yes --su
 alias vghg="valgrind --tool=helgrind"
 alias drd="valgrind --tool=helgrind --tool=drd"
 alias gitfalse="git config pull.rebase false"
-alias delsig="rm -rf ~/.config/google-chrome/Singleton*"
+alias delsig="rm -rf ~/.config/google-chrome"
 alias c="clear"
 alias myrun="./a.out < input > myoutput"
 alias mydiff="diff myoutput output"
@@ -44,7 +47,7 @@ alias cppsnippets="vim ~/.vim/bundle/vim-snippets/UltiSnips/cpp.snippets"
 alias gosnippets="vim ~/.vim/bundle/vim-snippets/UltiSnips/go.snippets"
 alias pysnippets="vim ~/.vim/bundle/vim-snippets/UltiSnips/python.snippets"
 alias cppupdate="cp ~/.vim/bundle/vim-snippets/UltiSnips/cpp.snippets ~/vimstuffs/."
-alias cppdiff="diff ~/.vim/bundle/vim-snippets/UltiSnips/cpp.snippets ~/vimstuffs/cpp.snippets"
+alias cppdiff="diff ~/.vim/bundle/vim-snippets/UltiSnips/cpp.snippets ~/vimstuffs/."
 alias cpppull="cp ~/vimstuffs/cpp.snippets ~/.vim/bundle/vim-snippets/UltiSnips/cpp.snippets"
 alias goupdate="cp ~/.vim/bundle/vim-snippets/UltiSnips/go.snippets ~/vimstuffs/."
 alias godiff="diff ~/.vim/bundle/vim-snippets/UltiSnips/go.snippets ~/vimstuffs/."
@@ -155,3 +158,7 @@ source $ZSH/oh-my-zsh.sh
 alias francinette=/home/xiaxu/francinette/tester.sh
 
 alias paco=/home/xiaxu/francinette/tester.sh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
