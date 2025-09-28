@@ -733,26 +733,22 @@ int main()
 endsnippet
 
 snippet fori "" i
-for (int ${2:i} = 0; $2 < ${1:count}; $2${3:++})
-	${4}
+for (int ${2:i} = 0; $2 < ${1:count}; $2${3:++}) ${4}
 endsnippet
 
 snippet forir "" i
-for (int ${2:i} = ${1:count}; $2 >= 0; $2${3:--})
-	${4}
+for (int ${2:i} = ${1:count}; $2 >= 0; $2${3:--}) ${4}
 endsnippet
 
 snippet forj "" i
-for (int ${2:j} = 0; $2 < ${1:count}; $2${3:++})
-	${4}
+for (int ${2:j} = 0; $2 < ${1:count}; $2${3:++}) ${4}
 endsnippet
 
 snippet forjr "" i
-for (int ${2:j} = ${1:count}; $2 >= 0; $2${3:--})
-	${4}
+for (int ${2:j} = ${1:count}; $2 >= 0; $2${3:--}) ${4}
 endsnippet
 
-snippet s
+snippet s "" i
 std::${0}
 endsnippet
 
@@ -1370,4 +1366,60 @@ const auto __ = []() {
 }();
 endsnippet
 
+snippet mod
+const int MOD = 1e9 + 7;
+endsnippet
+
+snippet knapsack
+int n, C;
+std::cin >> n >> C;
+std::vector<int> w(n), v(n);
+for (int i = 0; i < n; i++)
+std::cin >> w[i];
+for (int i = 0; i < n; i++)
+std::cin >> v[i];
+std::vector<int> dp(C + 1);
+for (int i = 1; i <= n; i++)
+{
+	for (int j = C; j > 0; j--)
+	{
+		if (j < w[i - 1]) continue;
+		dp[j] = std::maC(dp[j], dp[j - w[i - 1]] + v[i - 1]);
+	}
+}
+std::cout << dp[C] << std::endl;
+endsnippet
+
+snippet random
+std::mt19937 rng(std::random_device{}());
+std::uniform_int_distribution<int> dist(0, 99); // (min value, max value)
+for (int i = 0; i < 10; i++) {
+	std::cout << dist(rng) << " ";
+}
+endsnippet
+
+snippet invmod
+const long long int MOD = 1000000007;
+
+long long int modpow(long long int a, long long int e, long long int m) {
+	long long int r = 1;
+	while (e)
+	{
+		if (e & 1) r = r * a % m;
+		a = a * a % m;
+		e >>= 1;
+	}
+	return r;
+}
+
+// Fermat's little theorem: a^(m-2) ≡ a^(-1) (mod m), works since MOD is prime
+long long int modinv(long long int a, long long m) {
+	return modpow(a, m - 2, m);
+}
+
+// a / b % m = a * (b^(m - 2)) % m
+long long int moddiv(long long int a, long long int b, long long int m) {
+	return a % m * modinv(b, m) % m;
+}
+endsnippet
 # vim:ft=snippets:
