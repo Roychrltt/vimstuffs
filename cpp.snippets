@@ -1422,4 +1422,12 @@ long long int moddiv(long long int a, long long int b, long long int m) {
 	return a % m * modinv(b, m) % m;
 }
 endsnippet
+
+snippet transform
+std::string s = "Hello, world!";
+std::string result;
+result.resize(s.size());
+std::transform(s.begin(), s.end(), result.begin(),
+		[&](unsigned char c){ return std::tolower(c); });
+endsnippet
 # vim:ft=snippets:
