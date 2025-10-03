@@ -686,8 +686,8 @@ std::sort($1.begin(), $1.end(), [&](const auto& a, const auto& b{
 }));
 endsnippet
 
-snippet accumulate "" i
-std::accumulate($1.begin(), $1.end(), 0);
+snippet reduce "" i
+std::reduce($1.begin(), $1.end(), 0);
 endsnippet
 
 snippet sync "" i
