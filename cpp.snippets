@@ -1434,4 +1434,75 @@ result.resize(s.size());
 std::transform(s.begin(), s.end(), result.begin(),
 		[&](unsigned char c){ return std::tolower(c); });
 endsnippet
+
+snippet rootme
+#include <bits/stdc++.h>
+#include <sys/socket.h>
+#include <arpa/inet.h>
+#include <unistd.h>
+#include <netdb.h>
+
+int main() {
+	const char* host = "challenge01.root-me.org";
+	const int port = 52023;
+
+	// Resolve host
+	struct hostent* server = gethostbyname(host);
+	if (!server) {
+		std::cerr << "Could not resolve host\n";
+		return 1;
+	}
+
+	// Create socket
+	int sock = socket(AF_INET, SOCK_STREAM, 0);
+	if (sock < 0) {
+		std::cerr << "Socket creation failed\n";
+		return 1;
+	}
+
+	// Setup server address
+	struct sockaddr_in serv_addr;
+	serv_addr.sin_family = AF_INET;
+	serv_addr.sin_port = htons(port);
+	memcpy(&serv_addr.sin_addr.s_addr, server->h_addr, server->h_length);
+
+	// Connect to server
+	if (connect(sock, (struct sockaddr*)&serv_addr, sizeof(serv_addr)) < 0) {
+		std::cerr << "Connection failed\n";
+		return 1;
+	}
+
+	// Receive challenge
+	char buffer[1024];
+	int len = read(sock, buffer, sizeof(buffer) - 1);
+	if (len <= 0) {
+		std::cerr << "Read error\n";
+		close(sock);
+		return 1;
+	}
+
+	buffer[len] = '\0';
+	std::string msg(buffer);
+	std::cout << "Server sent:\n" << msg << "\n";
+
+	/*int pos1 = msg.find('\'');
+	  int pos2 = msg.rfind('\'');
+	  std::string extracted = msg.substr(pos1 + 1, pos2 - pos1 - 1);
+	  std::string ans = f(extracted);
+	  std::cout << ans << std::endl;
+	  ans += '\n';
+	  send(sock, ans.c_str(), ans.size(), 0);*/
+
+	// Receive server response (non-blocking simple)
+	len = read(sock, buffer, sizeof(buffer) - 1);
+	if (len > 0) {
+		buffer[len] = '\0';
+		std::cout << "Server replied:\n" << buffer << "\n";
+	}
+	else std::cerr << "No response received (server may have closed connection)\n";
+
+	close(sock);
+	return 0;
+}
+endsnippet
 # vim:ft=snippets:
