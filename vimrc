@@ -24,6 +24,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'preservim/nerdtree'
 Plugin 'itchyny/lightline.vim'
+Plugin 'fatih/vim-go'
 call vundle#end()          
 filetype plugin indent on    
 
@@ -39,5 +40,11 @@ let g:python3_host_prog = '/opt/homebrew/opt/python@3.13/bin/python3.13'
 let g:lightline = {
 			\ 'colorscheme': 'Tomorrow_Night_Blue'
 			\ }
+let g:go_fmt_command = "goimports"
+let g:go_def_mapping_enabled = 0     " disable default mappings if you want custom ones
+let g:go_auto_type_info = 1          " show type info in the status line
+let g:go_doc_popup_window = 1        " show documentation in popup
+autocmd BufWritePre *.go :silent! GoFmt
+
 nnoremap <C-t> :vert term<CR><C-w>L
 inoremap <C-t> :vert term<CR><C-w>L
