@@ -44,6 +44,11 @@ let g:go_fmt_command = "goimports"
 let g:go_def_mapping_enabled = 0     " disable default mappings if you want custom ones
 let g:go_auto_type_info = 1          " show type info in the status line
 let g:go_doc_popup_window = 1        " show documentation in popup
+let g:go_version_warning = 0
+let $GOROOT = expand("$HOME/go")
+let $GOPATH = expand("$HOME/go_projects")
+let $PATH = $GOROOT . "/bin:" . $GOPATH . "/bin:" . $PATH
+
 autocmd BufWritePre *.go :silent! GoFmt
 
 nnoremap <C-t> :vert term<CR><C-w>L
