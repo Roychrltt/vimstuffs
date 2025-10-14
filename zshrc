@@ -1,9 +1,6 @@
 # If you come from bash you might have to change your $PATH.
-export GOROOT=$HOME/go
-export GOPATH=$HOME/go_projects
-export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
 
-export PATH="/home/xiaxu/go/bin:/opt/homebrew/opt/python@3.13/Frameworks/Python.framework/Versions/3.13/bin:$PATH:/home/xiaxu/.local/bin:/Users/roychrltt/go/bin"
+export PATH="/opt/homebrew/opt/python@3.13/Frameworks/Python.framework/Versions/3.13/bin:$PATH:/home/xiaxu/.local/bin:/Users/roychrltt/go/bin"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 

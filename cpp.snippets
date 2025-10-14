@@ -752,7 +752,7 @@ for (int ${2:j} = ${1:count}; $2 >= 0; $2${3:--})
 	${4}
 endsnippet
 
-snippet s "" i
+snippet s
 std::${0}
 endsnippet
 
@@ -1416,12 +1416,11 @@ long long int modpow(long long int a, long long int e, long long int m) {
 	return r;
 }
 
-// Fermat's little theorem: a^(m-2) ≡ a^(-1) (mod m), works since MOD is prime
 long long int modinv(long long int a, long long m) {
 	return modpow(a, m - 2, m);
 }
 
-// a / b % m = a * (b^(m - 2)) % m
+// a / b % m
 long long int moddiv(long long int a, long long int b, long long int m) {
 	return a % m * modinv(b, m) % m;
 }
