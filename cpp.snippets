@@ -535,10 +535,10 @@ while (!q.empty()) {
 endsnippet
 
 snippet dijkstra
-using pii = std::pair<int, int>;
-void dijkstra(int start, int dst, const std::vector<std::vector<pii>>& adj) {
-	std::vector<int> dist(dst + 1, INT_MAX); 
-	std::priority_queue<pii, std::vector<pii>, std::greater<pii>> pq;
+using pll = std::pair<long long int, long long int>;
+void dijkstra(int start, int dst, const std::vector<std::vector<pll>>& adj) {
+	std::vector<long long int> dist(dst + 1, INT_MAX); 
+	std::priority_queue<pll, std::vector<pll>, std::greater<pll>> pq;
 
 	dist[start] = 0;
 	pq.push({0, start});
@@ -552,7 +552,7 @@ void dijkstra(int start, int dst, const std::vector<std::vector<pii>>& adj) {
 		for (const auto& [neighbour, time] : adj[node]) {
 			if (dist[node] + time < dist[neighbour]) {
 				dist[neighbour] = dist[node] + time;
-				pq.push(dist[neighbour], neighbour);
+				pq.push({dist[neighbour], neighbour});
 			}
 		}
 	}
