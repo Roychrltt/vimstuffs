@@ -64,6 +64,7 @@ alias vimupdate="cp ~/.vimrc ~/vimstuffs/vimrc"
 alias vimdiff="diff ~/.vimrc ~/vimstuffs/vimrc"
 alias vimpull="cp ~/vimstuffs/vimrc ~/.vimrc"
 alias python="python3"
+alias py="python3"
 
 # git log -p -2 (to see the last 2 entries for the commits)
 # git log --stat (to see commits in a summarised way)
