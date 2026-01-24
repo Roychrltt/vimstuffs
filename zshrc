@@ -1,6 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 
-export PATH="/opt/homebrew/opt/python@3.13/Frameworks/Python.framework/Versions/3.13/bin:$PATH:/home/xiaxu/.local/bin:/Users/roychrltt/go/bin"
+export PATH="/opt/homebrew/opt/python@3.13/Frameworks/Python.framework/Versions/3.13/bin:$PATH:/home/xiaxu/.local/bin:/Users/roychrltt/go/bin:/opt/homebrew/bin/dot"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
@@ -46,6 +46,7 @@ alias csnippets="vim ~/.vim/bundle/vim-snippets/UltiSnips/c.snippets"
 alias cppsnippets="vim ~/.vim/bundle/vim-snippets/UltiSnips/cpp.snippets"
 alias gosnippets="vim ~/.vim/bundle/vim-snippets/UltiSnips/go.snippets"
 alias pysnippets="vim ~/.vim/bundle/vim-snippets/UltiSnips/python.snippets"
+alias rustsnippets="vim ~/.vim/bundle/vim-snippets/UltiSnips/rust.snippets"
 alias cppupdate="cp ~/.vim/bundle/vim-snippets/UltiSnips/cpp.snippets ~/vimstuffs/."
 alias cppdiff="diff ~/.vim/bundle/vim-snippets/UltiSnips/cpp.snippets ~/vimstuffs/."
 alias cpppull="cp ~/vimstuffs/cpp.snippets ~/.vim/bundle/vim-snippets/UltiSnips/cpp.snippets"
@@ -55,6 +56,9 @@ alias gopull="cp ~/vimstuffs/go.snippets ~/.vim/bundle/vim-snippets/UltiSnips/go
 alias pyupdate="cp ~/.vim/bundle/vim-snippets/UltiSnips/python.snippets ~/vimstuffs/."
 alias pydiff="diff ~/.vim/bundle/vim-snippets/UltiSnips/python.snippets ~/vimstuffs/."
 alias pypull="cp ~/vimstuffs/python.snippets ~/.vim/bundle/vim-snippets/UltiSnips/python.snippets"
+alias rustupdate="cp ~/.vim/bundle/vim-snippets/UltiSnips/rust.snippets ~/vimstuffs/."
+alias rustdiff="diff ~/.vim/bundle/vim-snippets/UltiSnips/rust.snippets ~/vimstuffs/."
+alias rustpull="cp ~/vimstuffs/python.snippets ~/.vim/bundle/vim-snippets/UltiSnips/rust.snippets"
 alias cupdate="cp ~/.vim/bundle/vim-snippets/UltiSnips/c.snippets ~/vimstuffs/."
 alias cpull="cp ~/vimstuffs/c.snippets ~/.vim/bundle/vim-snippets/UltiSnips/c.snippets"
 alias zshupdate="cp ~/.zshrc ~/vimstuffs/zshrc"
