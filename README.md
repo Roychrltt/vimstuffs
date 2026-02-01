@@ -1,4 +1,4 @@
-### Leave my snippets here in case one day I get suspected of cheating 
+### Leave my snippets here in case one day I get suspected of cheating in contests
 
 To install Nord terminal theme on **Mac**: 
 
