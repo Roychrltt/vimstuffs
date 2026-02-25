@@ -1757,4 +1757,61 @@ void floydWarshall(std::vector<std::vector<int>> &dist)
 	}
 }
 endsnippet
+
+snippet tarjan
+// Usage: Tarjan t(n, graph); n being number of nodes, graph being std::vector<std::vector<>>
+// std::vector<std::vector<int>> sccs = t.findSCCs();
+class Tarjan {
+	int n;
+	std::vector<std::vector<int>>& graph;
+	std::vector<int> disc, low;
+	std::vector<bool> onStack;
+	std::stack<int> st;
+	int timer = 0;
+	std::vector<std::vector<int>> sccs;
+
+	void dfs(int u)
+	{
+		disc[u] = low[u] = timer++;
+		st.push(u);
+		onStack[u] = true;
+
+		for (int v : graph[u])
+		{
+			if (disc[v] == -1)
+			{
+				dfs(v);
+				low[u] = std::min(low[u], low[v]);
+			}
+			else if (onStack[v])
+				low[u] = std::min(low[u], disc[v]);
+		}
+
+		// u is root of an SCC
+		if (low[u] == disc[u])
+		{
+			std::vector<int> scc;
+			while (true)
+			{
+				int w = st.top(); st.pop();
+				onStack[w] = false;
+				scc.push_back(w);
+				if (w == u) break;
+			}
+			sccs.push_back(scc);
+		}
+	}
+
+	public:
+	Tarjan(int n, std::vector<std::vector<int>>& graph) : n(n), graph(graph), disc(n, -1), low(n, -1), onStack(n, false) {}
+
+	std::vector<std::vector<int>> findSCCs()
+	{
+		for (int i = 0; i < n; i++)
+			if (disc[i] == -1)
+				dfs(i);
+		return sccs;
+	}
+};
+endsnippet
 # vim:ft=snippets:

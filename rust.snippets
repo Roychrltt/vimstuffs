@@ -28,11 +28,11 @@ pub async fn ${1:function_name}($2)${3/..*/ -> /}$3 {
 }
 endsnippet
 
-snippet pr "print!(..)" b
+snippet pr "print!(..)" i
 print!("$1"${2/..*/, /}$2);
 endsnippet
 
-snippet pl "println!(..)" b
+snippet pl "println!(..)" i
 println!("$1"${2/..*/, /}$2);
 endsnippet
 
@@ -50,4 +50,17 @@ impl$4 ${1:Type/Trait}${2: for ${3:Type}}${4:<${5:T}>} {
 }
 endsnippet
 
+snippet inp "" i
+let mut input = String::new();
+io::stdin().read_to_string(&mut input).unwrap();
+let mut iter = input.split_whitespace();
+
+let n: usize = iter.next().unwrap().parse().unwrap();
+
+let mut v = Vec::with_capacity(n);
+for _ in 0..n {
+	let x: i32 = iter.next().unwrap().parse().unwrap();
+	v.push(x);
+}
+endsnippet
 # vim:ft=snippets:

@@ -1,6 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 
-export PATH="/opt/homebrew/opt/python@3.13/Frameworks/Python.framework/Versions/3.13/bin:$PATH:/home/xiaxu/.local/bin:/Users/roychrltt/go/bin:/opt/homebrew/bin/dot"
+export PATH="/opt/homebrew/opt/python@3.13/Frameworks/Python.framework/Versions/3.13/bin:$PATH:/home/xiaxu/.local/bin:/Users/roychrltt/go/bin:/opt/homebrew/bin/dot:$HOME/.local/bin"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
