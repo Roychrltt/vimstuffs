@@ -556,10 +556,7 @@ void dijkstra(int start, int dst, const std::vector<std::vector<pll>>& adj) {
 			}
 		}
 	}
-
-	for (int i = 1; i <= dst; i++)
-		std::cout << dist[i] << " ";
-	std::cout << "\n";
+	std::cout << dist[dst] << std::endl;
 }
 endsnippet
 
@@ -1054,44 +1051,26 @@ int kthSmallest(std::vector<int>& v, int l, int r, int k)
 endsnippet
 
 snippet bit
+// {1, 2, 3, 4, 5} sum(3) = 6
 class BIT {
 	public:
-		std::vector<int> bit;
-		int n;
+		std::vector<int> tree;
+		int size_;
 
-		BIT(int n)
-		{
-			this->n = n + 1;
-			bit.assign(n + 1, 0);
-		}
-
-		BIT(const std::vector<int>& v)
-		{
-			n = v.size() + 1;
-			bit.resize(n);
-			for (size_t i = 0; i < v.size(); i++)
-				add(i + 1, v[i]);
-		}
+		BIT(int n) : size_(n), tree(n + 1, 0) {}
 
 		int sum(int i)
 		{
-			if (i > n) i = n;
+			if (i > size_) i = size_;
 			int ans = 0;
-			while (i > 0)
-			{
-				ans += bit[i];
-				i -= i & -i;
-			}
+			for (; i > 0; i -= i & -i) ans += tree[i];
 			return ans;
 		}
 
 		void add(int i, int d)
 		{
-			while (i < n)
-			{
-				bit[i] += d;
-				i += i & -i;
-			}
+			for (; i <= size_; i += i & -i)
+				tree[i] += d;
 		}
 };
 endsnippet
@@ -1850,7 +1829,7 @@ int lowbit(u64 x) { return (x == 0 ? -1 : __builtin_ctzll(x)); }
 endsnippet
 
 snippet print
-template<typename... Args>
+	template<typename... Args>
 void print(Args... args)
 {
 	((std::cout << args << " "), ...);
